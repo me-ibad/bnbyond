@@ -1,0 +1,49 @@
+:root {
+  --yellow: #f2b619;
+  --white: #ffffff;
+  --primary: #04a5c2;
+  --color-lightgrey: #f9f9f9;
+}
+
+.wd-styl {
+  width: 170px;
+}
+
+.imgcard-styl {
+  width: 150px;
+  height: 150px;
+}
+.imgwidth {
+  width: 130px;
+}
+.text-color {
+  color: var(--primary);
+}
+.header-height {
+  height: 1000px;
+}
+.text-commingsoon {
+  font-size: 100px;
+}
+
+.bg-auth {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 767px) {
+  .mtmob {
+    margin-top: 100px;
+  }
+  .text-commingsoon {
+    font-size: 50px;
+  }
+  .header-height {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .mtmob {
+    /* margin-top: 100px; */
+  }
+}
