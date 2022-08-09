@@ -1,0 +1,1 @@
+2022-08-08 14:07:58 error: [GET] /favicon.ico ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat 'G:\react projects\bnbyond\server\build\index.html'

@@ -1,0 +1,1 @@
+2022-07-24 00:52:59 error: [GET] / ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat 'G:\react projects\xpera\project-xpera\server\build\index.html'

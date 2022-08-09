@@ -1,0 +1,3 @@
+2022-07-23 03:30:48 error: [GET] /facebookshare/6287a887b8c72c4bd4ae9bae ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat 'G:\react projects\xpera\project-xpera\server\build\index.html'
+2022-07-23 03:30:48 error: [GET] /favicon.ico ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat 'G:\react projects\xpera\project-xpera\server\build\index.html'
+2022-07-23 04:33:26 error: [GET] /acebookshare/62da4ea31850c5b890e53f54 ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat 'G:\react projects\xpera\project-xpera\server\build\index.html'

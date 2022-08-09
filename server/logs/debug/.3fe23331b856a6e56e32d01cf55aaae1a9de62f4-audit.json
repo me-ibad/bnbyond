@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "G:\\react projects\\bnbyond\\server\\logs\\debug\\.3fe23331b856a6e56e32d01cf55aaae1a9de62f4-audit.json",
+    "files": [
+        {
+            "date": 1659947145515,
+            "name": "G:\\react projects\\bnbyond\\server\\logs\\debug\\2022-08-08.log",
+            "hash": "a3e5efc2fc337a1b145f0668316159b55feccf62be23437fe0b45c80b07e734c"
+        }
+    ],
+    "hashType": "sha256"
+}

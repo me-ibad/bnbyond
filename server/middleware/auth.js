@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const config = process.env;
 
 const verifyToken = (req, res, next) => {
   try {
     const token =
-      req.body.token || req.query.token || req.headers['authorization'];
+      req.headers.token || req.query.token || req.headers["authorization"];
 
     if (!token) {
       return res.status(403).json({
-        message: 'A token is required for authentication',
+        message: "A token is required for authentication",
       });
     }
     try {
@@ -17,12 +17,12 @@ const verifyToken = (req, res, next) => {
       req.user = decoded;
     } catch (err) {
       return res.status(403).json({
-        message: 'Invalid Token',
+        message: "Invalid Token",
       });
     }
   } catch {
     return res.status(403).json({
-      message: 'Error Occur while Acess Token',
+      message: "Error Occur while Acess Token",
     });
   }
 

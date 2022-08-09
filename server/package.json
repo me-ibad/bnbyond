@@ -13,10 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.983.0",
+    "ba64": "^3.0.9",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.8",
     "expo-server-sdk": "^3.6.0",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
+    "http-errors": "^2.0.0",
+    "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "jsonwebtoken-refresh": "^5.7.0",
     "link-check": "^5.0.0",
@@ -30,7 +34,10 @@
     "react-stripe": "^0.1.0",
     "request": "^2.88.2",
     "stripe": "^8.176.0",
-    "twilio": "^3.69.0"
+    "twilio": "^3.69.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.8.1",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

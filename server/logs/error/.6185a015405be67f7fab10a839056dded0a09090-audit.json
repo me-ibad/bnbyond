@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "G:\\react projects\\xpera\\project-xpera\\server\\logs\\error\\.6185a015405be67f7fab10a839056dded0a09090-audit.json",
+    "files": [
+        {
+            "date": 1658528441110,
+            "name": "G:\\react projects\\xpera\\project-xpera\\server\\logs\\error\\2022-07-23.log",
+            "hash": "b53953c56ab61b6859648e40f942c2f160d2f14e0105cec06fd84dd8f98406a3"
+        },
+        {
+            "date": 1658603812620,
+            "name": "G:\\react projects\\xpera\\project-xpera\\server\\logs\\error\\2022-07-24.log",
+            "hash": "87efe8159b455093e4a2cea28c265597d751231af63f92803a0eeb998133b95e"
+        },
+        {
+            "date": 1658774630992,
+            "name": "G:\\react projects\\xpera\\project-xpera\\server\\logs\\error\\2022-07-25.log",
+            "hash": "9f613bc13b9ca0fac13e155aa1193a41d88135c7cd561bcf5cfc7cd2c1c13813"
+        },
+        {
+            "date": 1658775749823,
+            "name": "G:\\react projects\\xpera\\project-xpera\\server\\logs\\error\\2022-07-26.log",
+            "hash": "387e07957756a29edc3d570a31f5e8a3fbd47ce838f9f963bcb94082fafc79a2"
+        }
+    ],
+    "hashType": "sha256"
+}

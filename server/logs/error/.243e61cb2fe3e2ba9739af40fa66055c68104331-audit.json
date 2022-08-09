@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\Nisarg\\Desktop\\xpera\\project-xpera\\server\\logs\\error\\.243e61cb2fe3e2ba9739af40fa66055c68104331-audit.json",
+    "files": [
+        {
+            "date": 1658325174883,
+            "name": "C:\\Users\\Nisarg\\Desktop\\xpera\\project-xpera\\server\\logs\\error\\2022-07-20.log",
+            "hash": "f21ef1bde375a990ecb0be62ecb905d034c6f7aece38357b2040dff49a8c9aa1"
+        }
+    ],
+    "hashType": "sha256"
+}
