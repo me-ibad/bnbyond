@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 
 import { useNavigate, Link } from 'react-router-dom';
-
+import Grid from '@mui/material/Grid';
 import * as Yup from 'yup';
 import { useLoginEmailAccount } from 'hooks';
 import GoogleApi from 'components/SocialLogin/GoogleApi';
@@ -31,97 +31,109 @@ function Signin() {
   });
   return (
     <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
-      <div className='w-full lg:w-4/12 px-4'>
-        <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg bg-auth rounded-lg  border-0'>
-          <div className='rounded-t mb-0 px-6 py-6'>
-            <div className='text-center mb-3'>
-              <h6 className='text-grey-500 text-sm font-bold'>Sign in</h6>
+      <Grid container spacing={2}>
+        <Grid item lg={5} md={5} sm={12} xs={12}>
+          <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg bg-auth rounded-lg  border-0'>
+            <div className='rounded-t mb-0 px-6 py-6'>
+              <div className='text-center mb-3'>
+                <h6 className='text-grey-500 text-sm font-bold'>Sign in</h6>
+              </div>
+
+              <hr className='mt-6 border-b-1 border-grey-300' />
             </div>
+            <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
+              <form onSubmit={formik.handleSubmit}>
+                <div className='relative w-full mb-3'>
+                  <label
+                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    htmlFor='grid-password'
+                  >
+                    Email/UserName
+                  </label>
+                  <input
+                    id='username'
+                    name='username'
+                    type='text'
+                    className='input-styl'
+                    placeholder='Email/UserName'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.username}
+                  />
+                  {formik.touched.email && formik.errors.username ? (
+                    <div className='text-red-500 text-sm'>
+                      {formik.errors.username}
+                    </div>
+                  ) : null}
+                </div>
 
-            <hr className='mt-6 border-b-1 border-grey-300' />
-          </div>
-          <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
-            <form onSubmit={formik.handleSubmit}>
-              <div className='relative w-full mb-3'>
-                <label
-                  className='block uppercase text-grey-600 text-xs font-bold mb-2'
-                  htmlFor='grid-password'
+                <div className='relative w-full mb-3'>
+                  <label
+                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    htmlFor='grid-password'
+                  >
+                    Password
+                  </label>
+                  <input
+                    name='pass'
+                    id='pass'
+                    type='password'
+                    className='input-styl'
+                    placeholder='Password'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.pass}
+                  />
+                  {formik.touched.pass && formik.errors.pass ? (
+                    <div className='text-red-500 text-sm'>
+                      {formik.errors.pass}
+                    </div>
+                  ) : null}
+                </div>
+                <a
+                  href='/auth/forgotpassword'
+                  className='flex float-right font-bold text my-2 underline'
                 >
-                  Email/UserName
-                </label>
-                <input
-                  id='username'
-                  name='username'
-                  type='text'
-                  className='input-styl'
-                  placeholder='Email/UserName'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.username}
-                />
-                {formik.touched.email && formik.errors.username ? (
-                  <div className='text-red-500 text-sm'>
-                    {formik.errors.username}
-                  </div>
-                ) : null}
-              </div>
+                  Forget Password
+                </a>
 
-              <div className='relative w-full mb-3'>
-                <label
-                  className='block uppercase text-grey-600 text-xs font-bold mb-2'
-                  htmlFor='grid-password'
-                >
-                  Password
-                </label>
-                <input
-                  name='pass'
-                  id='pass'
-                  type='password'
-                  className='input-styl'
-                  placeholder='Password'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.pass}
-                />
-                {formik.touched.pass && formik.errors.pass ? (
-                  <div className='text-red-500 text-sm'>
-                    {formik.errors.pass}
-                  </div>
-                ) : null}
-              </div>
+                <div className='text-center mt-6'>
+                  {isLoading ? (
+                    <div />
+                  ) : (
+                    <>
+                      <button className='btn-styl' type='submit'>
+                        Sign In
+                      </button>
+                    </>
+                  )}
+                </div>
+                <hr className='separator my-4' />
+
+                <GoogleApi name='Continue with Google' />
+                <FacebookApi name='Continue with Facebook' />
+              </form>
+
               <a
-                href='/auth/forgotpassword'
-                className='flex float-right font-bold text my-2 underline'
+                href='/auth/signup'
+                className='flex float-right font-bold text mt-4 underline'
               >
-                Forget Password
+                Register
               </a>
-
-              <div className='text-center mt-6'>
-                {isLoading ? (
-                  <div />
-                ) : (
-                  <>
-                    <button className='btn-styl' type='submit'>
-                      Sign In
-                    </button>
-                  </>
-                )}
-              </div>
-              <hr className='separator my-4' />
-
-              <GoogleApi name='Continue with Google' />
-              <FacebookApi name='Continue with Facebook' />
-            </form>
-
-            <a
-              href='/auth/signup'
-              className='flex float-right font-bold text mt-4 underline'
-            >
-              Register
-            </a>
+            </div>
           </div>
-        </div>
-      </div>
+        </Grid>
+        <Grid item lg={5} md={5} sm={10} xs={10}>
+          <div className='desktopview absolute top-32 mx-auto'>
+            <div className='mt-6 flex center-styl'>
+              <img
+                className='logo-landing object-contain '
+                src={require('assets/img/whitelogo.png')}
+              />
+            </div>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }

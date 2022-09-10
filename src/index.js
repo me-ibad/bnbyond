@@ -25,13 +25,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
-      <React.StrictMode>
-        <LanguageContextProvider>
-          <Root />
-        </LanguageContextProvider>
+      <LanguageContextProvider>
+        <Root />
+      </LanguageContextProvider>
 
-        <ToastContainer limit={1} />
-      </React.StrictMode>
+      <ToastContainer limit={1} />
     </QueryClientProvider>
   </Provider>,
   document.getElementById('root')

@@ -15,8 +15,7 @@ export default function LandingPage() {
           <div
             className='absolute top-0 w-full h-full bg-center bg-cover bg-fixed	'
             style={{
-              backgroundImage:
-                'url(' + require('assets/img/landingbg.jpg') + ')',
+              backgroundImage: 'url(' + require('assets/img/bg.jpeg') + ')',
             }}
           >
             <span
@@ -27,13 +26,19 @@ export default function LandingPage() {
           <div className=' absolute top-10 mx-auto'>
             <div className='w-full  px-4 ml-auto mr-auto text-center'>
               <h1 className='text-white font-bold text-commingsoon opacity-50 uppercase'>
-                Comming soon
+                Coming soon
               </h1>
               {/* <p className='mt-4 text-lg text-gray-200'>
                     This is a simple example of a Landing Page you can build
                     using Notus React. It features multiple CSS components based
                     on the Tailwind CSS design system.
                   </p> */}
+              <div className='mt-6 flex center-styl'>
+                <img
+                  className='logo-landing object-contain '
+                  src={require('assets/img/whitelogo.png')}
+                />
+              </div>
             </div>
           </div>
           <div
@@ -178,7 +183,7 @@ export default function LandingPage() {
                     </div>
                     <div className='text-center mt-6'>
                       <button
-                        className='bg-color-red text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                        className='bg-color-secondry text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                         type='button'
                       >
                         Send Message

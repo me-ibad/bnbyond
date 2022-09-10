@@ -13,8 +13,7 @@ function Auth() {
           <div
             className='absolute top-0 w-full h-full bg-gray-800 bg-cover bg-full'
             style={{
-              backgroundImage:
-                'url(' + require('assets/img/landingbg.jpg') + ')',
+              backgroundImage: 'url(' + require('assets/img/bg.jpeg') + ')',
             }}
           ></div>
           <Routes>

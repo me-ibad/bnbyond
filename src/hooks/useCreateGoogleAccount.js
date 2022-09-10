@@ -13,7 +13,7 @@ export const useCreateGoogleAccount = () => {
       onSuccess: (data) => {
         if (data.status) {
           storeLocalData(data.data);
-          toast.success('Du hast Dich erfolgreich angemeldet!');
+          toast.success('login');
         }
       },
       onError: (err) => {

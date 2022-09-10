@@ -4,16 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'color-primary': '#fea934',
-        'color-grey': '#404040',
+        'color-primary': '#e8ad21',
+        'color-secondry': '#58c0d0',
+        'color-grey': '#cecece',
         'color-lightgrey': ' #F9F9F9',
         'color-btn': '#04A5C2',
-        'color-red': '#bd3b2e',
-        'color-green': '#82bf58',
-        'color-blue': '#378caa',
-        'color-yellow': '#ead82f',
+        'color-red': '#c0392d',
+        'color-green': '#c1e1c2',
+        'color-blue': '#58c0d0',
+        'color-yellow': '#e8ad21',
         'color-black': '#343434',
         'color-bg': '#dfefef',
+        'color-dotgrey': '#DADADA',
       },
     },
     screens: {

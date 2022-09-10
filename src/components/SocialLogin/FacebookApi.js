@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCreateFacebookAccount } from 'hooks/useCreateFacebookAccount';
 // import { LOGIN } from 'reactStore/actions/Actions';
-import { ImageEndPoint } from 'config/config';
+import { ImageEndPoint, facebookapi } from 'config/config';
 function FacebookApi(props, { type = 'Signup', handleClose }) {
   const dispatch = useDispatch();
   const { mutateAsync: createFacebookAccount } = useCreateFacebookAccount();
@@ -32,7 +32,7 @@ function FacebookApi(props, { type = 'Signup', handleClose }) {
   }
   return (
     <FacebookLogin
-      appId={'288332070178271'}
+      appId={facebookapi}
       textButton={props.name}
       fields='name,email,picture'
       callback={FacebookLoginSuccessRequest}
