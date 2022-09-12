@@ -1,85 +1,81 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { useDropzone } from 'react-dropzone';
+import ListingColor from 'components/Cards/ListingColor';
+import { Dropzone, FileItem, FullScreenPreview } from '@dropzone-ui/react';
 
 export default function AddImages(props) {
-  const [option, setOption] = useState(null);
-  const [img, setImg] = useState([]);
-
-  const { acceptedFiles, fileRejections, open, getRootProps, getInputProps } =
-    useDropzone({
-      accept: {
-        'image/jpeg': [],
-        'image/png': [],
-      },
-      maxFiles: 2,
-      noClick: true,
-      noKeyboard: true,
-      onDrop: (acceptedFiles) => {
-        setImg(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      },
-    });
-
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path} className='text-blue-800'>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
-
-  const thumbs = img.map((file) => (
-    <div key={file.name}>
-      <div>
-        <img
-          src={file.preview}
-          className='w-10 h-10 object-contain'
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(file.preview);
-          }}
-        />
-      </div>
-    </div>
-  ));
+  const [files, setFiles] = useState([]);
+  const [imageSrc, setImageSrc] = useState(undefined);
+  const updateFiles = (incommingFiles) => {
+    console.log('incomming files', incommingFiles);
+    setFiles(incommingFiles);
+  };
+  const onDelete = (id) => {
+    setFiles(files.filter((x) => x.id !== id));
+  };
+  const handleSee = (imageSource) => {
+    setImageSrc(imageSource);
+  };
+  const handleClean = (files) => {
+    console.log('list cleaned', files);
+  };
 
   return (
     <div>
       <Grid container spacing={2}>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <div className='bg-color-yellow p-10 grid center-styl rounded w-full h-96 relative'>
-            <h1 className='text-5xl text-[#ead1a3] font-bold leading-tight'>
-              What kind of property it is
-            </h1>
-            <div className='absolute right-0 bottom-0'>
-              <img
-                src={require('assets/img/icon.png')}
-                alt='icon'
-                className='w-20 h-20 rounded object-contain'
-              />
-            </div>
-          </div>
+          <ListingColor
+            bg='bg-color-yellow'
+            text='What kind of property it is'
+            color='text-[#ead1a3]'
+          />
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <div className='mt-16'>
-            <section className='container'>
-              <div {...getRootProps({ className: 'dropzone' })}>
-                <input {...getInputProps()} maxFiles={4} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
-                <button type='button' onClick={open}>
-                  Open File Dialog
-                </button>
-              </div>
-              <aside>
-                <h4>Files</h4>
-                <ul>{files}</ul>
-                {thumbs}
-              </aside>
-            </section>
+          <div className='lg:mt-16 sm:4'>
+            <Dropzone
+              style={{ minWidth: '550px' }}
+              //view={"list"}
+              onChange={updateFiles}
+              minHeight='195px'
+              onClean={handleClean}
+              value={files}
+              minFiles={5}
+              //header={false}
+              // footer={false}
+              maxFileSize={2998000}
+              label='Drop your photos here (atleast 5)'
+              //label="Suleta tus archivos aquí"
+              accept='image/*'
+              uploadingMessage={'Uploading...'}
+              url='https://my-awsome-server/upload-my-file'
+              //of course this url doens´t work, is only to make upload button visible
+              //uploadOnDrop
+              //clickable={false}
+              fakeUploading
+              //localization={"FR-fr"}
+              disableScroll
+            >
+              {files.length > 0 &&
+                files.map((file) => (
+                  <FileItem
+                    {...file}
+                    key={file.id}
+                    onDelete={onDelete}
+                    onSee={handleSee}
+                    //localization={"ES-es"}
+                    resultOnTooltip
+                    preview
+                    info
+                    hd
+                  />
+                ))}
+            </Dropzone>
+            <FullScreenPreview
+              imgSource={imageSrc}
+              openImage={imageSrc}
+              onClose={(e) => handleSee(undefined)}
+            />
           </div>
         </Grid>
       </Grid>

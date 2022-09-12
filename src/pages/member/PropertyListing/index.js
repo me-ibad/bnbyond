@@ -6,6 +6,9 @@ import SpaceType from './SpaceType';
 import PropertyAddress from './PropertyAddress';
 import AddAmenities from './AddAmenities';
 import AddImages from './AddImages';
+import AddCharacteristics from './AddCharacteristics';
+import Preview from './Preview';
+import AddTitle from './AddTitle';
 
 function PropertyListing() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -17,7 +20,7 @@ function PropertyListing() {
     setActiveStep(activeStep - 1);
   };
 
-  const steps = [1, 2, 3, 4, 5];
+  const steps = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const getStepContent = (step) => {
     switch (step) {
@@ -31,6 +34,12 @@ function PropertyListing() {
         return <AddAmenities />;
       case 4:
         return <AddImages />;
+      case 5:
+        return <AddTitle />;
+      case 6:
+        return <AddCharacteristics />;
+      case 7:
+        return <Preview />;
       default:
         return;
     }
@@ -61,15 +70,15 @@ function PropertyListing() {
             {activeStep === steps.length - 1 ? (
               <div className='center-styl my-10'>
                 <button
-                  className='btn2-styl h-12 w-6/12 '
+                  className='bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={() => onSubmit()}
                 >
-                  Submit
+                  Save Listing
                 </button>
               </div>
             ) : null}
 
-            <div className='center-styl my-6'>
+            <div className='flex center-styl my-6'>
               {activeStep !== 0 && (
                 <button
                   className='text-black font-bold mx-20'

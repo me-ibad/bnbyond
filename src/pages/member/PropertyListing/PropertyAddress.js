@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import GoogleMapReact from 'google-map-react';
+import ListingColor from 'components/Cards/ListingColor';
+import AutoAddress from 'components/AutoAddress';
 
 const AnyReactComponent = ({ text }) => (
   <div>
@@ -20,25 +22,22 @@ export default function PropertyAddress() {
     zoom: 11,
   };
 
+  const changeAddress = (address, lat, long) => {
+    console.log(address, lat, long);
+  };
+
   return (
     <div>
       <Grid container spacing={2}>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <div className='bg-color-red p-10 grid center-styl rounded w-full h-[420px] relative'>
-            <h1 className='text-5xl text-[#e7b5b0] font-bold leading-tight'>
-              Where is your rentle propert located?
-            </h1>
-            <div className='absolute right-0 bottom-0'>
-              <img
-                src={require('assets/img/icon.png')}
-                alt='icon'
-                className='w-20 h-20 rounded object-contain'
-              />
-            </div>
-          </div>
+          <ListingColor
+            bg='bg-color-red'
+            text='Where is your rentle propert located?'
+            color='text-[#e7b5b0]'
+          />
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <div style={{ height: '50vh', width: '100%' }}>
+          <div style={{ height: '45vh', width: '100%' }}>
             <GoogleMapReact
               bootstrapURLKeys={{
                 key: 'AIzaSyBu2WqDbYFglNC_u5HHcoFQmCgnxps6vH8',
@@ -51,6 +50,13 @@ export default function PropertyAddress() {
                 lng={77.01502627}
                 text='My Marker'
               />
+              <div className='fixed -ml-40 -mt-20 '>
+                <AutoAddress
+                  className='p-3 rounded-full w-72 shadow-xl text-center text-xl placeholder:text-xl'
+                  placeholder='Enter your Address'
+                  changeaddress={changeAddress}
+                />
+              </div>
             </GoogleMapReact>
           </div>
         </Grid>

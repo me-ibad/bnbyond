@@ -49,7 +49,7 @@ code {
 /* index styl */
 
 .input-styl {
-  @apply border border-gray-300	 px-3 py-3 placeholder-black text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150;
+  @apply border border-gray-300	 px-3 py-3 placeholder-black text-black bg-white rounded  shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150;
 }
 
 .btn-styl {
@@ -62,7 +62,7 @@ code {
   @apply block lg:block md:block sm:hidden xs:hidden;
 }
 .center-styl {
-  @apply flex  content-center items-center justify-center;
+  @apply content-center items-center justify-center;
 }
 .landing-text {
   @apply text-lg font-light leading-relaxed mt-0 mb-4 text-gray-600;

@@ -1030,6 +1030,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-1.0.0.tgz#91c560df2ed8d9700e4c7ed4ac21a3a322c9d975"
 
+"@dropzone-ui/react@^6.7.10":
+  version "6.7.10"
+  resolved "https://registry.yarnpkg.com/@dropzone-ui/react/-/react-6.7.10.tgz#2ef061f8ef095e5338fb865dd44e28b7108008ea"
+  integrity sha512-QyfJonavk3dinCmFGR4orIPFMAJDcuU+v39gyHpvOZGNHYtV59ienJY+D4lPexWIFPCEFEHkPFotYB088K364w==
+
 "@emotion/babel-plugin@^11.7.1":
   version "11.9.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.9.5.tgz#99cdba190b40b782c276bfbd144df17cc42f765a"
@@ -8453,6 +8458,11 @@ uri-js@^4.2.2:
   resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
   dependencies:
     punycode "^2.1.0"
+
+use-places-autocomplete@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/use-places-autocomplete/-/use-places-autocomplete-4.0.0.tgz#3865636e7fb6e28dbbddc95a780528b84f94bb86"
+  integrity sha512-w8jdm1iT3WXN0DPXtgyccJoBlAk/UetCMg466B2pBiWNBfvAIxdRoU6Gt4CzW11rWWuzpqnMG5hLxUOKSZBSgw==
 
 use-sync-external-store@^1.0.0, use-sync-external-store@^1.2.0:
   version "1.2.0"

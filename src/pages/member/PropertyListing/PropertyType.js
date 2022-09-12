@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import SelectBox from 'components/Select/SelectBox';
+import ListingColor from 'components/Cards/ListingColor';
 
 export default function PropertyType() {
   const [option, setOption] = useState(null);
@@ -19,18 +20,11 @@ export default function PropertyType() {
     <div>
       <Grid container spacing={2}>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <div className='bg-color-yellow p-10 grid center-styl rounded w-full h-96 relative'>
-            <h1 className='text-5xl text-[#ead1a3] font-bold leading-tight'>
-              What kind of property it is
-            </h1>
-            <div className='absolute right-0 bottom-0'>
-              <img
-                src={require('assets/img/icon.png')}
-                alt='icon'
-                className='w-20 h-20 rounded object-contain'
-              />
-            </div>
-          </div>
+          <ListingColor
+            bg='bg-color-yellow'
+            text='What kind of property it is'
+            color='text-[#ead1a3]'
+          />
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <div className='mt-16'>
