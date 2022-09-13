@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 import ListingColor from 'components/Cards/ListingColor';
 import MultiSelect from 'components/Select/MultiSelect';
-export default function AddCharacteristics() {
+export default function AddCharacteristics({ state, setState }) {
   const data = [
     { value: 'luxurious ', label: 'Luxurious' },
     { value: 'modern', label: 'Modern' },

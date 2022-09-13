@@ -1,9 +1,24 @@
 import React from 'react';
 
-export default function MultiSelect({ data, withImg }) {
-  const [checked, onChange] = React.useState(false);
+export default function MultiSelect({
+  data,
+  withImg,
+
+  onSelect,
+  allData,
+}) {
+  const [checked, onChange] = React.useState(data.status);
   function onCheckmarkPress() {
     onChange(!checked);
+
+    console.log(checked);
+
+    allData[data.id].status = !checked;
+    let newdata = allData.map((item) => {
+      return item;
+    });
+    onSelect(newdata);
+    // setData(newdata);
   }
   return (
     <div

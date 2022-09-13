@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import SelectBox from 'components/Select/SelectBox';
 import ListingColor from 'components/Cards/ListingColor';
 
-export default function PropertyType() {
+export default function PropertyType({ state, setState }) {
   const [option, setOption] = useState(null);
   const data = [
     { value: 'house', img: require('assets/img/house.jpg') },
@@ -14,7 +14,7 @@ export default function PropertyType() {
     { value: 'unique', img: require('assets/img/unique.jpg') },
   ];
 
-  console.log(option);
+  // setState((prevState) => ({ ...prevState, propertyType: option }));
 
   return (
     <div>
@@ -28,7 +28,12 @@ export default function PropertyType() {
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <div className='mt-16'>
-            <SelectBox data={data} onSelect={(value) => setOption(value)} />
+            <SelectBox
+              data={data}
+              onSelect={(value) =>
+                setState((prevState) => ({ ...prevState, propertyType: value }))
+              }
+            />
           </div>
         </Grid>
       </Grid>

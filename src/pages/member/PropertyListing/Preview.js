@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import ListingColor from 'components/Cards/ListingColor';
 import ReviewCard from 'components/Cards/ReviewCard';
 
-export default function Preview() {
+export default function Preview({ state, setState }) {
   return (
     <Grid container spacing={2}>
       <Grid item lg={6} md={6} sm={12} xs={12}>

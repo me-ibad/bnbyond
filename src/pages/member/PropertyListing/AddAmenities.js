@@ -3,22 +3,18 @@ import Grid from '@mui/material/Grid';
 import SelectBox from 'components/Select/SelectBox';
 import ListingColor from 'components/Cards/ListingColor';
 import MultiSelect from 'components/Select/MultiSelect';
+import { AmenitiesData } from 'data/AmenitiesData';
 
-export default function AddAmenities() {
-  const [option, setOption] = useState(null);
-  const data = [
-    { value: 'fireplace', img: require('assets/img/fireplace.jpg') },
-    { value: 'exercise', img: require('assets/img/exercise.jpg') },
-    { value: 'pool', img: require('assets/img/pool.jpg') },
-    { value: 'outdoordining', img: require('assets/img/outdoordining.jpg') },
-    { value: 'bbq', img: require('assets/img/bbq.jpg') },
-    { value: 'firepit', img: require('assets/img/firepit.jpg') },
-    { value: 'hottub', img: require('assets/img/hottub.jpg') },
-    { value: 'kid', img: require('assets/img/kid.jpg') },
-    { value: 'patio', img: require('assets/img/patio.jpg') },
-  ];
+export default function AddAmenities({ state, setState }) {
+  const [data, setData] = useState(AmenitiesData);
 
-  console.log(option);
+  // console.log(data);
+  // setState((prevState) => ({ ...prevState, amenities: data }));
+
+  const onSelect = (values) => {
+    setState((prevState) => ({ ...prevState, amenities: values }));
+    console.log(values);
+  };
 
   return (
     <div>
@@ -34,7 +30,12 @@ export default function AddAmenities() {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <div className='grid grid-cols-3 gap-3'>
             {data.map((item) => (
-              <MultiSelect data={item} withImg={true} />
+              <MultiSelect
+                data={item}
+                withImg={true}
+                allData={data}
+                onSelect={onSelect}
+              />
             ))}
           </div>
         </Grid>

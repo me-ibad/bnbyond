@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import SelectOption from 'components/Select/SelectOption';
 import ListingColor from 'components/Cards/ListingColor';
-export default function SpaceType() {
+export default function SpaceType({ state, setState }) {
   const [option, setOption] = useState(null);
   const data = [
     { value: 'entire', label: 'Entire Space' },
@@ -23,7 +23,12 @@ export default function SpaceType() {
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <div className='mt-20'>
-            <SelectOption data={data} onSelect={(value) => setOption(value)} />
+            <SelectOption
+              data={data}
+              onSelect={(value) =>
+                setState((prevState) => ({ ...prevState, spaceType: value }))
+              }
+            />
           </div>
         </Grid>
       </Grid>

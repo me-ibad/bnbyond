@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 import ListingColor from 'components/Cards/ListingColor';
 
-export default function AddTitle() {
+export default function AddTitle({ state, setState }) {
   const [title, setTitle] = useState('');
   return (
     <div>

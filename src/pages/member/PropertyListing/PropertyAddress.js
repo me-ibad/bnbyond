@@ -13,7 +13,7 @@ const AnyReactComponent = ({ text }) => (
     />
   </div>
 );
-export default function PropertyAddress() {
+export default function PropertyAddress({ state, setState }) {
   const defaultProps = {
     center: {
       lat: 10.99835602,
@@ -24,6 +24,9 @@ export default function PropertyAddress() {
 
   const changeAddress = (address, lat, long) => {
     console.log(address, lat, long);
+    setState((prevState) => ({ ...prevState, address: address }));
+    setState((prevState) => ({ ...prevState, lat: lat }));
+    setState((prevState) => ({ ...prevState, long: long }));
   };
 
   return (

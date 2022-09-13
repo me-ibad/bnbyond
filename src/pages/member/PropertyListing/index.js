@@ -11,6 +11,19 @@ import Preview from './Preview';
 import AddTitle from './AddTitle';
 
 function PropertyListing() {
+  const [state, setState] = React.useState({
+    propertyType: '',
+    spaceType: '',
+    address: '',
+    lat: '',
+    long: '',
+    amenities: [],
+    photos: [],
+    title: '',
+    characteristics: [],
+    price: '',
+  });
+
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -25,27 +38,29 @@ function PropertyListing() {
   const getStepContent = (step) => {
     switch (step) {
       case 0:
-        return <PropertyType />;
+        return <PropertyType state={state} setState={setState} />;
       case 1:
-        return <SpaceType />;
+        return <SpaceType state={state} setState={setState} />;
       case 2:
-        return <PropertyAddress />;
+        return <PropertyAddress state={state} setState={setState} />;
       case 3:
-        return <AddAmenities />;
+        return <AddAmenities state={state} setState={setState} />;
       case 4:
-        return <AddImages />;
+        return <AddImages state={state} setState={setState} />;
       case 5:
-        return <AddTitle />;
+        return <AddTitle state={state} setState={setState} />;
       case 6:
-        return <AddCharacteristics />;
+        return <AddCharacteristics state={state} setState={setState} />;
       case 7:
-        return <Preview />;
+        return <Preview state={state} setState={setState} />;
       default:
         return;
     }
   };
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    console.log(state);
+  };
 
   return (
     <div className='min-h-screen'>
@@ -68,7 +83,7 @@ function PropertyListing() {
             {getStepContent(activeStep)}
 
             {activeStep === steps.length - 1 ? (
-              <div className='center-styl my-10'>
+              <div className='flex center-styl my-10'>
                 <button
                   className='bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={() => onSubmit()}
@@ -92,7 +107,7 @@ function PropertyListing() {
                 ''
               ) : (
                 <button
-                  className='bg-black rounded py-2 px-4 text-white'
+                  className='bg-black rounded py-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={handleNext}
                 >
                   {activeStep === steps.length - 1 ? 'Next' : 'Next'}
