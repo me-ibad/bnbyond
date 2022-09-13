@@ -4,12 +4,13 @@ import { useDropzone } from 'react-dropzone';
 import ListingColor from 'components/Cards/ListingColor';
 import { Dropzone, FileItem, FullScreenPreview } from '@dropzone-ui/react';
 
-export default function AddImages(props) {
+export default function AddImages({ state, setState }) {
   const [files, setFiles] = useState([]);
   const [imageSrc, setImageSrc] = useState(undefined);
   const updateFiles = (incommingFiles) => {
     console.log('incomming files', incommingFiles);
     setFiles(incommingFiles);
+    setState((prevState) => ({ ...prevState, photos: incommingFiles }));
   };
   const onDelete = (id) => {
     setFiles(files.filter((x) => x.id !== id));
@@ -39,7 +40,7 @@ export default function AddImages(props) {
               onChange={updateFiles}
               minHeight='195px'
               onClean={handleClean}
-              value={files}
+              value={state.photos}
               minFiles={5}
               //header={false}
               // footer={false}
@@ -56,8 +57,8 @@ export default function AddImages(props) {
               //localization={"FR-fr"}
               disableScroll
             >
-              {files.length > 0 &&
-                files.map((file) => (
+              {state.photos.length > 0 &&
+                state.photos.map((file) => (
                   <FileItem
                     {...file}
                     key={file.id}

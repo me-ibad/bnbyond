@@ -3,18 +3,14 @@ import Grid from '@mui/material/Grid';
 
 import ListingColor from 'components/Cards/ListingColor';
 import MultiSelect from 'components/Select/MultiSelect';
+import { CharacteristicsData } from 'data/CharacteristicsData';
 export default function AddCharacteristics({ state, setState }) {
-  const data = [
-    { value: 'luxurious ', label: 'Luxurious' },
-    { value: 'modern', label: 'Modern' },
-    { value: 'spacious', label: 'Spacious' },
-    { value: 'chill', label: 'Chill' },
-    { value: 'central', label: 'Central' },
-    { value: 'historic', label: 'Historic' },
-    { value: 'designer', label: 'Designer' },
-    { value: 'private', label: 'Private' },
-    { value: 'queit', label: 'Queit' },
-  ];
+  const [data, setData] = useState(CharacteristicsData);
+
+  const onSelect = (values) => {
+    setState((prevState) => ({ ...prevState, characteristics: values }));
+    console.log(values);
+  };
 
   return (
     <div>
@@ -29,7 +25,12 @@ export default function AddCharacteristics({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <div className='grid grid-cols-3 gap-3 lg:mt-20 sm:4'>
             {data.map((item) => (
-              <MultiSelect data={item} withImg={false} />
+              <MultiSelect
+                data={item}
+                withImg={false}
+                allData={data}
+                onSelect={onSelect}
+              />
             ))}
           </div>
         </Grid>

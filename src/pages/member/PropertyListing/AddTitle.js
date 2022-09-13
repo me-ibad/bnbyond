@@ -25,12 +25,17 @@ export default function AddTitle({ state, setState }) {
               name='story'
               rows='5'
               cols='33'
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
+              onChange={(e) =>
+                setState((prevState) => ({
+                  ...prevState,
+                  title: e.target.value,
+                }))
+              }
+              value={state.title}
               placeholder='Island beach'
               className='input-styl placeholder:text-3xl text-3xl placeholder:text-color-grey'
             />
-            <div className='text-sm mt-2'>{title.length}/50</div>
+            <div className='text-sm mt-2'>{state.title.length}/50</div>
           </div>
         </Grid>
       </Grid>
