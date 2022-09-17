@@ -9,6 +9,7 @@ import AddImages from './AddImages';
 import AddCharacteristics from './AddCharacteristics';
 import Preview from './Preview';
 import AddTitle from './AddTitle';
+import SetPricing from './SetPricing';
 
 function PropertyListing() {
   const [state, setState] = React.useState({
@@ -33,7 +34,7 @@ function PropertyListing() {
     setActiveStep(activeStep - 1);
   };
 
-  const steps = [1, 2, 3, 4, 5, 6, 7, 8];
+  const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const getStepContent = (step) => {
     switch (step) {
@@ -52,6 +53,8 @@ function PropertyListing() {
       case 6:
         return <AddCharacteristics state={state} setState={setState} />;
       case 7:
+        return <SetPricing state={state} setState={setState} />;
+      case 8:
         return <Preview state={state} setState={setState} />;
       default:
         return;
