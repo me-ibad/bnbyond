@@ -45,17 +45,17 @@ function Signin() {
               <form onSubmit={formik.handleSubmit}>
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-password'
                   >
-                    Email/UserName
+                    Email/ UserName
                   </label>
                   <input
                     id='username'
                     name='username'
                     type='text'
                     className='input-styl'
-                    placeholder='Email/UserName'
+                    placeholder='Email/ UserName'
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.username}
@@ -69,7 +69,7 @@ function Signin() {
 
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-password'
                   >
                     Password
@@ -94,7 +94,7 @@ function Signin() {
                   href='/auth/forgotpassword'
                   className='flex float-right font-bold text my-2 underline'
                 >
-                  Forget Password
+                  Forgot Password
                 </a>
 
                 <div className='text-center mt-6'>

@@ -12,7 +12,7 @@ export const useLoginEmailAccount = () => {
       onSuccess: (data) => {
         if (data.status) {
           storeLocalData(data.data);
-          toast.success('User successfully  Login');
+          // toast.success('User successfully  Login');
         }
       },
       onError: (err) => {

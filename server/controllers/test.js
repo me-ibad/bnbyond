@@ -34,7 +34,7 @@ const login = async (req, res) => {
       // user
       res.status(200).json({ status: true, data: user });
     } else {
-      res.status(400).json({ message: 'invalid crendtial' });
+      res.status(400).json({ message: 'Incorrect username name or pw' });
     }
   } catch (err) {
     console.log(err);

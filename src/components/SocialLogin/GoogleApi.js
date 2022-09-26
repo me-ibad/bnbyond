@@ -34,7 +34,7 @@ function GoogleApi(props, { type = 'Signup', handleClose }) {
       res['pic'] = ImageEndPoint + res.pic;
 
       // dispatch(LOGIN(res));
-      navigate('/account/home');
+      navigate('/');
     }
 
     ///// dispatch(GOOGLE_API_SIGN_UP(data.profileObj));

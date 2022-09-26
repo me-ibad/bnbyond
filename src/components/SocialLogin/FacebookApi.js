@@ -27,7 +27,7 @@ function FacebookApi(props, { type = 'Signup', handleClose }) {
 
       // dispatch(LOGIN(res));
 
-      navigate('/account/home');
+      navigate('/');
     }
   }
   return (

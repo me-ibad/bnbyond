@@ -31,7 +31,7 @@ function Signup() {
         .required('Required')
         .matches(
           /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
+          'Must Contain 8 Characters, One , One Lowercase, One Number and One Special Case Character'
         ),
     }),
     onSubmit: async (values) => {
@@ -56,7 +56,7 @@ function Signup() {
               <form onSubmit={formik.handleSubmit}>
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-name'
                   >
                     Name
@@ -80,7 +80,7 @@ function Signup() {
 
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-email'
                   >
                     Email
@@ -104,7 +104,7 @@ function Signup() {
 
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-password'
                   >
                     User Name
@@ -128,7 +128,7 @@ function Signup() {
 
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-password'
                   >
                     Password
@@ -152,7 +152,7 @@ function Signup() {
 
                 <div className='relative w-full mb-3'>
                   <label
-                    className='block uppercase text-grey-600 text-xs font-bold mb-2'
+                    className='block  text-grey-600 text-xs font-bold mb-2'
                     htmlFor='grid-cpass'
                   >
                     Confirm Password

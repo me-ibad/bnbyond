@@ -55,7 +55,7 @@ function UpdatePassword() {
             <form onSubmit={formik.handleSubmit}>
               <div className='relative w-full mb-3'>
                 <label
-                  className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                  className='block  text-blueGray-600 text-xs font-bold mb-2'
                   htmlFor='grid-password'
                 >
                   Password
@@ -79,7 +79,7 @@ function UpdatePassword() {
 
               <div className='relative w-full mb-3'>
                 <label
-                  className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                  className='block text-blueGray-600 text-xs font-bold mb-2'
                   htmlFor='grid-password'
                 >
                   Confirm Password
