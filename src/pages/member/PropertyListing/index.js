@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+
 import Container from '@mui/material/Container';
 import { toast } from 'react-toastify';
 import PropertyType from './PropertyType';
@@ -12,6 +14,8 @@ import AddTitle from './AddTitle';
 import SetPricing from './SetPricing';
 
 function PropertyListing() {
+  let navigate = useNavigate();
+
   const [state, setState] = React.useState({
     propertyType: '',
     spaceType: '',
@@ -75,10 +79,14 @@ function PropertyListing() {
 
           <div className='bg-white w-full container-post  p-10 my-6 '>
             <div className='flex float-right'>
-              <button className='btn-styl ' type='btn'>
+              <button className='btn-styl ' type='button'>
                 Help
               </button>
-              <button className='btn-styl mx-10' type='btn'>
+              <button
+                className='btn-styl mx-10'
+                type='button'
+                onClick={() => navigate('/')}
+              >
                 Exit
               </button>
             </div>

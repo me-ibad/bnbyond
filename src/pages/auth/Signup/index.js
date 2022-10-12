@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 
 import { useNavigate, Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import * as Yup from 'yup';
 import { useCreateEmailAccount } from 'hooks';
 import FacebookApi from 'components/SocialLogin/FacebookApi';
@@ -28,11 +28,11 @@ function Signup() {
         .required('Required'),
       pass: Yup.string()
         .min(8, 'Must be more than 8 characters')
-        .required('Required')
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          'Must Contain 8 Characters, One , One Lowercase, One Number and One Special Case Character'
-        ),
+        .required('Required'),
+      // .matches(
+      //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      //   'Must Contain 8 Characters, One , One Lowercase, One Number and One Special Case Character'
+      // ),
     }),
     onSubmit: async (values) => {
       // eslint-disable-next-line
@@ -176,7 +176,7 @@ function Signup() {
 
                 <div className='text-center mt-6'>
                   {isLoading ? (
-                    <div />
+                    <CircularProgress />
                   ) : (
                     <>
                       <button className='btn-styl' type='submit'>

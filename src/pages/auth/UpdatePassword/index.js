@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useParams } from 'react-router-dom';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { useUpdatePass } from 'hooks';
 
 function UpdatePassword() {
@@ -103,7 +103,7 @@ function UpdatePassword() {
 
               <div className='text-center mt-6'>
                 {isLoading === true ? (
-                  <div />
+                  <CircularProgress />
                 ) : (
                   <button className='btn-styl' type='submit'>
                     Update

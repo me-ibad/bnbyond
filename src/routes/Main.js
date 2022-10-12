@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Landingpage from 'pages/Landingpage';
 import Navbar from 'components/Navbars/AuthNavbar';
 import PropertyListing from 'pages/member/PropertyListing';
+import Nofound from 'pages/StaticPages/Nofound';
 
 function Main() {
   return (
@@ -14,6 +15,7 @@ function Main() {
           <Routes>
             <Route path='/' element={<Landingpage />} />
             <Route path='/propertylisting' element={<PropertyListing />} />
+            <Route path='*' element={<Nofound />} />
           </Routes>
         </section>
       </main>

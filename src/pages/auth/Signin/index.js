@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { useLoginEmailAccount } from 'hooks';
 import GoogleApi from 'components/SocialLogin/GoogleApi';
 import FacebookApi from 'components/SocialLogin/FacebookApi';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Signin() {
   let navigate = useNavigate();
@@ -26,7 +27,7 @@ function Signin() {
     onSubmit: async (values) => {
       // eslint-disable-next-line
       const response = await loginEmailAccount(values);
-      navigate('/');
+      navigate('/propertylisting');
     },
   });
   return (
@@ -99,7 +100,7 @@ function Signin() {
 
                 <div className='text-center mt-6'>
                   {isLoading ? (
-                    <div />
+                    <CircularProgress />
                   ) : (
                     <>
                       <button className='btn-styl' type='submit'>

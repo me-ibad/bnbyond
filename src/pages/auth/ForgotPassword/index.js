@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { useApplyFotForgetPass } from 'hooks';
 function ForgotPassword() {
@@ -20,8 +21,8 @@ function ForgotPassword() {
       email: Yup.string().email('Invalid email address').required('required'),
     }),
     onSubmit: async (values) => {
-      // const response = await applyFotForgetPass(values);
-      toast.success('Email send');
+      const response = await applyFotForgetPass(values);
+      toast.success('email sent for forgotten password');
       // console.log(response);
       // if (response.status) {
       //   navigate('/');
@@ -70,7 +71,7 @@ function ForgotPassword() {
 
                 <div className='text-center mt-6'>
                   {isLoading === true ? (
-                    <div />
+                    <CircularProgress />
                   ) : (
                     <button className='btn-styl' type='submit'>
                       Send
@@ -81,7 +82,7 @@ function ForgotPassword() {
                   href='/auth/signin'
                   className='flex float-right font-bold text mt-4 underline'
                 >
-                  Signin
+                  Sign in
                 </a>
               </form>
             </div>

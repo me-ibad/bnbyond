@@ -1,6 +1,8 @@
 /*eslint-disable*/
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { useNavigate, Link } from 'react-router-dom';
+import { localStorageData, Logout } from 'services/auth/localStorageData';
 
 // components
 
@@ -8,6 +10,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  let navigate = useNavigate();
+
   return (
     <>
       <nav className='top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg'>
@@ -70,15 +74,27 @@ export default function Navbar(props) {
               </li>
 
               <li className='flex items-center'>
-                <a
-                  className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
-                  href='/auth/signin'
-                >
-                  {/* <i className='lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg ' /> */}
-                  <span className=' inline-block ml-2'>
-                    Login/Become a member
-                  </span>
-                </a>
+                {localStorageData('_id') ? (
+                  <a
+                    className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
+                    onClick={() => {
+                      Logout();
+
+                      navigate('/');
+                    }}
+                  >
+                    Logout
+                  </a>
+                ) : (
+                  <a
+                    className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
+                    href='/auth/signin'
+                  >
+                    <span className=' inline-block ml-2'>
+                      Login/Become a member
+                    </span>
+                  </a>
+                )}
               </li>
 
               {/* <li className='flex items-center'>

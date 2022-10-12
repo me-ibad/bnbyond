@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Signin from 'pages/auth/Signin';
 import Signup from 'pages/auth/Signup';
 import ForgotPassword from 'pages/auth/ForgotPassword';
 import UpdatePassword from 'pages/auth/UpdatePassword';
+import Nofound from 'pages/StaticPages/Nofound';
 
 function Auth() {
   return (
@@ -17,6 +18,7 @@ function Auth() {
             }}
           ></div>
           <Routes>
+            <Route path='/' element={<Navigate to='/auth/signin' replace />} />
             <Route path='signin' element={<Signin />} />
             <Route path='signup' element={<Signup />} />
             <Route path='forgotpassword' element={<ForgotPassword />} />
