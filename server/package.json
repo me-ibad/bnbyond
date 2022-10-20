@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "airbnbapijs": "^0.10.5",
     "aws-sdk": "^2.983.0",
     "ba64": "^3.0.9",
     "bcrypt": "^5.0.1",

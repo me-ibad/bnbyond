@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'assets/css/App.css';
 import 'assets/fonts/Poppins-Regular.ttf';
+import 'react-multi-carousel/lib/styles.css';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';

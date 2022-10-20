@@ -5,6 +5,7 @@ import Landingpage from 'pages/Landingpage';
 import Navbar from 'components/Navbars/AuthNavbar';
 import PropertyListing from 'pages/member/PropertyListing';
 import Nofound from 'pages/StaticPages/Nofound';
+import Footer from 'components/Footers/Footer';
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
           </Routes>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

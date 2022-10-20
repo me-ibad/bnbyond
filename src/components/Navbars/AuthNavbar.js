@@ -14,14 +14,17 @@ export default function Navbar(props) {
 
   return (
     <>
-      <nav className='top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg'>
+      <nav className='top-0 absolute z-50 w-full flex flex-wrap items-center  justify-between px-2 py-3 navbar-expand-lg'>
         <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
           <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
             <Link
               className='text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase'
               to='/'
             >
-              Bnbyond
+              <img
+                className='w-full h-12 object-cover '
+                src={require('assets/img/whitelogo.png')}
+              />
             </Link>
             <button
               className='cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
@@ -50,18 +53,6 @@ export default function Navbar(props) {
               </li> */}
             </ul>
             <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
-              <li className='flex items-center'>{/* <PagesDropdown /> */}</li>
-              <li className='flex items-center'>
-                <a
-                  className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
-                  href='/'
-                  target='_blank'
-                >
-                  {/* <i className='lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg ' /> */}
-                  <span className='inline-block ml-2'>Contact</span>
-                </a>
-              </li>
-
               <li className='flex items-center'>
                 <a
                   className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
@@ -87,9 +78,13 @@ export default function Navbar(props) {
                   </a>
                 ) : (
                   <a
-                    className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
+                    className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2  items-center text-sm font-bold flex'
                     href='/auth/signin'
                   >
+                    <img
+                      className='w-6 h-6 object-contain '
+                      src={require('assets/img/icon.png')}
+                    />
                     <span className=' inline-block ml-2'>
                       Login/Become a member
                     </span>
