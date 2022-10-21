@@ -2,6 +2,11 @@ import React from 'react';
 import Container from '@mui/material/Container';
 
 export default function LandingHeader() {
+  const ref = React.useRef();
+  const handleInterviewDateClick = () => {
+    // alert('mm');
+    ref.current.focus();
+  };
   return (
     <div>
       <div className='relative pt-16 pb-32  header-height'>
@@ -33,12 +38,54 @@ export default function LandingHeader() {
               GO!
             </div>
           </div>
+
+          <Container maxWidth='lg'>
+            <div className=' w-full z-10 flex center-styl pt-6'>
+              <div className='bg-white rounded-xl  pr-4 shadow w-full'>
+                <div className='flex flex-wrap items-center justify-between'>
+                  <div className='my-4 lg:my-0 md:my-0  flex items-center '>
+                    <div className=' w-fit border-2 border-gray-300 rounded-full ml-2'>
+                      <input
+                        type='text text-black'
+                        placeholder='Find Your Destination'
+                        className='w-6/12 rounded-full  bg-gray-300 text-black px-4 py-2'
+                      />
+                      <button className='text-sm'>
+                        <i class='fas fa-map-marked-alt ml-2 '></i>-Used Map
+                        Instead
+                      </button>
+                    </div>
+                  </div>
+                  <div className='bg-gray-300 w-fit px-4 py-2 flex items-center rounded-3xl'>
+                    <span>Check-In</span>
+
+                    <div className='float-right'>
+                      <i class='fas fa-calendar-alt text-3xl ml-4'></i>
+                    </div>
+                  </div>
+
+                  <div className='bg-gray-300 w-fit px-4 py-2 flex items-center rounded-3xl'>
+                    <span>Check-out</span>
+
+                    <div className='float-right'>
+                      <i class='fas fa-calendar-alt text-3xl ml-4'></i>
+                    </div>
+                  </div>
+                  <div className=' m-4 lg:mr-2 md:mr-2 '>
+                    <div className='flex items-center font-bold'>
+                      <label htmlFor=''>Guests</label>
+                      <button className='ml-5'>-</button>{' '}
+                      <span className='bg-gray-300 px-4 py-2 rounded-3xl ml-2 '>
+                        1
+                      </span>
+                      <button className='ml-1'>+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
         </div>
-        <Container maxWidth='sm'>
-          {/* <div className='absolute z-10 flex center-styl pt-32'>
-            <div className='bg-white rounded-xl p-2 shadow w-full'>Find</div>
-          </div> */}
-        </Container>
       </div>
     </div>
   );
