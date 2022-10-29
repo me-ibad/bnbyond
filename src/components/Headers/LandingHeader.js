@@ -3,10 +3,7 @@ import Container from '@mui/material/Container';
 
 export default function LandingHeader() {
   const ref = React.useRef();
-  const handleInterviewDateClick = () => {
-    // alert('mm');
-    ref.current.focus();
-  };
+
   return (
     <div>
       <div className='relative pt-16 pb-32  header-height'>
@@ -39,8 +36,17 @@ export default function LandingHeader() {
             </div>
           </div>
 
+          <div className='pt-16 grid center-styl'>
+            <h1 className='text-white text-3xl font-semibold text-center'>
+              Host other BnByond members. Earn points. Travel the world
+            </h1>
+            <h3 className='mt-2 text-white text-xl text-center'>
+              Get the most out of your vacation rental property.
+            </h3>
+          </div>
+
           <Container maxWidth='lg'>
-            <div className=' w-full z-10 flex center-styl pt-6'>
+            <div className=' w-full z-10 flex center-styl pt-10'>
               <div className='bg-white rounded-xl  pr-4 shadow w-full'>
                 <div className='flex flex-wrap items-center justify-between'>
                   <div className='my-4 lg:my-0 md:my-0  flex items-center '>
