@@ -12,49 +12,23 @@ module.exports = (PlacesController) => {
     PlacesController.uploadProperty
   );
 
-  placespostRouter.post(
-    '/uploadParentComment',
-    checkApiKey,
-    PlacesController.uploadParentComment
-  );
+  placespostRouter.get(
+    '/getAllProperty/:lat/:long/:km',
 
-  placespostRouter.post(
-    '/uploadChildComment',
-    checkApiKey,
-    PlacesController.uploadChildComment
-  );
-
-  placespostRouter.post('/addthema', checkApiKey, PlacesController.addTheme);
-
-  placespostRouter.post(
-    '/deleteThema',
-
-    PlacesController.DeleteTheme
+    PlacesController.getAllProperty
   );
 
   placespostRouter.get(
-    '/getAllPost/:counter',
+    '/getPropertyByUserId/:userId',
 
-    PlacesController.getAllPosts
+    PlacesController.getPropertyByUserId
   );
 
-  placespostRouter.get(
-    '/getAllPostByDiseaseId/:diseaseId',
+  // placespostRouter.get(
+  //   '/getThemeByUserid/:userId',
 
-    PlacesController.getAllPostsByDiseaseId
-  );
-
-  placespostRouter.get(
-    '/getOnePost/:postId',
-
-    PlacesController.getOnePost
-  );
-
-  placespostRouter.get(
-    '/getThemeByUserid/:userId',
-
-    PlacesController.getThemeByUserId
-  );
+  //   PlacesController.getThemeByUserId
+  // );
 
   return placespostRouter;
-};
+};;;;;;;
