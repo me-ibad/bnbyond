@@ -12,9 +12,12 @@ const soialQueries = require("./soialQueries");
 
 const admin = require("./admin/index");
 
+const property = require('./propertyController');
+
 function controllersFactory() {
   return {
     admin,
+    property,
     post,
     email,
     userAuth,

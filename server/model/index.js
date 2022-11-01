@@ -6,5 +6,6 @@ module.exports = {
   ...require('./post'),
   SampleData: require('./sampleData'),
   ApiPlans: require('./apiPlans'),
+  Property: require('./property'),
   UserPlansHistory: require('./userPlansHistory'),
 };

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Volumes/Projects/React/bnbyond/server/logs/debug/.98fe0d2e2b25d885d60097d5564b88841b5003d5-audit.json",
+    "files": [
+        {
+            "date": 1667287046402,
+            "name": "/Volumes/Projects/React/bnbyond/server/logs/debug/2022-11-01.log",
+            "hash": "f16c5484646483855bad3875cf91d8444e63860926e02ba6ba196c0150e5d3f4"
+        }
+    ],
+    "hashType": "sha256"
+}

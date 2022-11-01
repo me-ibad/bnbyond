@@ -1,0 +1,1 @@
+2022-11-01 13:06:37 error: [POST] /api/places/uploadProperty ===> StatusCode:: 404, Message:: ENOENT: no such file or directory, stat '/Volumes/Projects/React/bnbyond/server/build/index.html'
