@@ -60,6 +60,13 @@ axios
           'X-RapidAPI-Key':
             '812472ad0emshd27325541276399p156f59jsn442b6fe2a9d6',
           'X-RapidAPI-Host': 'mashvisor-api.p.rapidapi.com',
+        method: "GET",
+        url: `https://mashvisor-api.p.rapidapi.com/airbnb-property/${response.data.content.neighborhood.id}`,
+        params: { state: "Fl" },
+        headers: {
+          "X-RapidAPI-Key":
+            "812472ad0emshd27325541276399p156f59jsn442b6fe2a9d6",
+          "X-RapidAPI-Host": "mashvisor-api.p.rapidapi.com",
         },
       })
       .then(function (response) {
