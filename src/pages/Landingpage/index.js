@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
@@ -7,8 +7,14 @@ import Grid from '@mui/material/Grid';
 import HomeCard from 'components/Cards/HomeCard';
 import Carousel from 'react-multi-carousel';
 import { HomeData } from 'data/HomeData';
+import { useMutation, useQuery } from 'react-query';
+import userServices from 'services/httpService/userAuth/userServices';
+import { toast } from 'react-toastify';
+import ErrorService from 'services/formatError/ErrorService';
 
 export default function LandingPage() {
+  const [allPost, setallPost] = React.useState([]);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 2000, min: 1300 },
@@ -32,6 +38,22 @@ export default function LandingPage() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+
+  const getAllPost = useQuery(
+    'allpost',
+    () => userServices.commonGetService(`/property/getAllProperty/0/0/0`),
+    {
+      refetchOnWindowFocus: false,
+      onError: (error) => {
+        toast.error(ErrorService.uniformError(error));
+      },
+      onSuccess: (res) => {
+        console.log(res.data);
+        setallPost(res.data.data);
+      },
+    }
+  );
+
   return (
     <>
       {/* <Navbar transparent /> */}

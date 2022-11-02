@@ -3,7 +3,27 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Tabs from 'components/Tabs/Tab';
 import TabPane from 'components/Tabs/TabPane';
+import Footer from 'components/Footers/Footer';
+import { AmenitiesData } from 'data/AmenitiesData';
+import GoogleMapReact from 'google-map-react';
+
 function PropertyDetails() {
+  const AnyReactComponent = ({ text }) => (
+    <div>
+      <img
+        src='https://i.ibb.co/xqDW27s/Vector.png'
+        alt='Vector'
+        className='object-contain w-10 h-10'
+      />
+    </div>
+  );
+  const defaultProps = {
+    center: {
+      lat: 10.99835602,
+      lng: 77.01502627,
+    },
+    zoom: 11,
+  };
   return (
     <main className='relative w-full  h-full  min-h-screen my-10'>
       <section>
@@ -42,15 +62,88 @@ function PropertyDetails() {
       <section>
         <Container maxWidth='lg'>
           <Tabs>
-            <TabPane name='dsfdf' key='1'>
-              asdasd
+            <TabPane name='About' key='1'>
+              <div className='mb-10'>
+                <div className='flex mb-4'>
+                  <img
+                    src='https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=996&t=st=1667375684~exp=1667376284~hmac=894d80d4b10c99fd135d0686fefdae78ee0a0c720c94c3b0c98ab472030ea433'
+                    alt='icon'
+                    className='w-14 h-14 rounded-full object-contain'
+                  />
+                  <div className='my-2 mx-3'>
+                    <h5 className='text-sm font-semibold text-black'>
+                      Nova Scotia
+                    </h5>
+                    <h6 className='text-gray-500 text-xs'>Premier Host</h6>
+                  </div>
+                </div>
+
+                <h4 className='text-xl font-bold text-black'>Summery</h4>
+
+                <p className='my-2 text-base text-black'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  sodales vitae elit sit amet volutpat. Ut placerat tortor ac
+                  malesuada malesuada. Phasellus tempor gravida elit, sit amet
+                  lobortis dui posuere sed. Duis purus metus, consequat ut risus
+                  ut, rutrum tincidunt sem. Nam maximus porta mauris, non
+                  accumsan orci rhoncus quis. Maecenas gravida sagittis
+                  volutpat. Pellentesque in pulvinar dolor. In consectetur nisl
+                  in nulla sollicitudin, eu placerat enim interdum. Curabitur
+                  varius arcu id tortor ullamcorper, vitae vulputate libero
+                  sollicitudin. Proin enim lectus, convallis nec pretium
+                  blandit, condimentum sit amet turpis.
+                </p>
+              </div>
             </TabPane>
-            <TabPane name='erweitertes Profil' key='2'>
-              asd
+            <TabPane name='Amenities' key='2'>
+              <div className='mb-10'>
+                <h4 className='text-xl font-bold text-black mb-4'>Amenities</h4>
+                <div className='grid grid-cols-2 gap-2	'>
+                  {AmenitiesData.map((item) => (
+                    <div className='flex my-3 mx-2' key={item.id}>
+                      <i class={`${item.font} text-lg mt-1`}></i>
+                      <span className='text-black mx-2'>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabPane>
+            <TabPane name='Rates' key='2'>
+              coming soon
+            </TabPane>
+
+            <TabPane name='Reviews' key='2'>
+              <div className='mb-10'>
+                <h4 className='text-xl font-bold text-black mb-4'>0 Reviews</h4>
+                <p>this property doesn't have any reviews</p>
+              </div>
+            </TabPane>
+
+            <TabPane name='Map' key='2'>
+              <div className='mb-10'>
+                <h4 className='text-xl font-bold text-black mb-2'>Map</h4>
+                <p className='mb-2'> Nova Scotia, Canada</p>
+                <div style={{ height: '45vh', width: '50%' }}>
+                  <GoogleMapReact
+                    bootstrapURLKeys={{
+                      key: 'AIzaSyBu2WqDbYFglNC_u5HHcoFQmCgnxps6vH8',
+                    }}
+                    defaultCenter={defaultProps.center}
+                    defaultZoom={defaultProps.zoom}
+                  >
+                    <AnyReactComponent
+                      lat={10.99835602}
+                      lng={77.01502627}
+                      text='My Marker'
+                    />
+                  </GoogleMapReact>
+                </div>
+              </div>
             </TabPane>
           </Tabs>
         </Container>
       </section>
+      <Footer />
     </main>
   );
 }
