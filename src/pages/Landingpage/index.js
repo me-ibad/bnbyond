@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
@@ -14,6 +14,32 @@ import ErrorService from 'services/formatError/ErrorService';
 
 export default function LandingPage() {
   const [allPost, setallPost] = React.useState([]);
+
+  // const getAllPost = useQuery(
+  //   'allpostThema',
+  //   () => userServices.commonGetService(`/property/getAllProperty/0/0/0`),
+  //   {
+  //     refetchOnWindowFocus: false,
+  //     onError: (error) => {
+  //       toast.error(ErrorService.uniformError(error));
+  //     },
+  //     onSuccess: (res) => {
+  //       alert('S');
+  //     },
+  //   }
+  // );
+
+  const getproperty = async () => {
+    let res = await userServices.commonGetService(
+      `/property/getAllProperty/0/0/0`
+    );
+
+    setallPost(res.data.data);
+  };
+
+  useEffect(() => {
+    getproperty();
+  }, []);
 
   const responsive = {
     desktop: {
@@ -38,21 +64,6 @@ export default function LandingPage() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-
-  const getAllPost = useQuery(
-    'allpost',
-    () => userServices.commonGetService(`/property/getAllProperty/0/0/0`),
-    {
-      refetchOnWindowFocus: false,
-      onError: (error) => {
-        toast.error(ErrorService.uniformError(error));
-      },
-      onSuccess: (res) => {
-        console.log(res.data);
-        setallPost(res.data.data);
-      },
-    }
-  );
 
   return (
     <>
@@ -126,7 +137,7 @@ export default function LandingPage() {
               dotListClass='custom-dot-list-style'
               renderButtonGroupOutside
             >
-              {HomeData.map((item) => (
+              {allPost.map((item) => (
                 <HomeCard data={item} />
               ))}
             </Carousel>

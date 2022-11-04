@@ -1,13 +1,13 @@
 import React from 'react';
 import Rating from '@mui/material/Rating';
-
+import { ImageEndPoint } from 'config/config';
 export default function HomeCard({ data }) {
   return (
     <div className=''>
       <div
         className=' w-60 h-60 bg-center bg-cover rounded'
         style={{
-          backgroundImage: 'url( ' + data.img + ')',
+          backgroundImage: ImageEndPoint + data.pics[0],
         }}
       >
         <div className='float-right mr-2 mt-2'>
@@ -19,15 +19,10 @@ export default function HomeCard({ data }) {
       </div>
 
       <div className='my-1 w-60'>
-        <h3 className='font-bold truncate'>{data.destination}</h3>
-        <h5 className='text-sm'>{data.features}</h5>
+        <h3 className='font-bold truncate'>{data.address}</h3>
+        <h5 className='text-sm'>{data.title}</h5>
 
-        <Rating
-          name='size-small'
-          readOnly
-          defaultValue={data.feedback}
-          size='small'
-        />
+        <Rating name='size-small' readOnly defaultValue={2} size='small' />
       </div>
     </div>
   );
