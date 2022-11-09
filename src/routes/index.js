@@ -1,7 +1,12 @@
 import React from 'react';
 import history from '../history';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useParams,
+} from 'react-router-dom';
 import Main from './Main';
 import Auth from './Auth';
 import Nofound from 'pages/StaticPages/Nofound';
@@ -22,7 +27,7 @@ function Root() {
       <Routes>
         <Route path='/*' element={<Main />} />
         <Route path='auth/*' element={<Auth />} />
-        <Route path='/propertydetails' element={<PropertyDetails />} />
+        <Route path='/propertydetails/:id' element={<PropertyDetails />} />
       </Routes>
     </Router>
   );
