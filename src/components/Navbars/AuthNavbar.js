@@ -60,7 +60,7 @@ export default function Navbar(props) {
                   target='_blank'
                 >
                   {/* <i className='lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg ' /> */}
-                  <span className=' inline-block ml-2'>About</span>
+                  <span className=' inline-block ml-2'>About {} </span>
                 </a>
               </li>
 
