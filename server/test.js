@@ -25,8 +25,10 @@ const options = {
   method: "GET",
   url: "https://mashvisor-api.p.rapidapi.com/property",
   params: {
-    address: "1421 SW 18th Street",
-    city: "Boca Raton",
+    //// address: "1421 SW 18th Street",
+
+    parcel_number: "06424736025450271",
+    //// city: "Boca Raton",
     state: "Fl",
     zip_code: "33486",
   },
@@ -39,7 +41,9 @@ const options = {
 axios
   .request(options)
   .then(function (response) {
-    //// console.log(response.data);
+    console.log(
+      "------------------main data----------------------------------------"
+    );
 
     console.log(response.data);
 
@@ -56,6 +60,10 @@ axios
       })
       .then(function (response) {
         //// console.log(response.data);
+
+        console.log(
+          "------------------other data----------------------------------------"
+        );
 
         console.log(response.data);
       })
