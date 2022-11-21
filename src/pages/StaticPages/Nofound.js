@@ -17,15 +17,12 @@ function Nofound() {
               <h1 className='text-5xl font-medium py-4'>
                 oops! Page not found
               </h1>
-              <p className='text-43xl pb-8 px-12 font-medium'>
+              <p className='text-xl pb-8 px-12 font-medium'>
                 Oops! The page you are looking for does not exist. It might have
                 been moved or deleted.
               </p>
               <div className='mx-20'>
-                <button
-                  onClick={() => navigate('/account/home')}
-                  className='btn-styl'
-                >
+                <button onClick={() => navigate('/')} className='btn-styl'>
                   HOME
                 </button>
               </div>
