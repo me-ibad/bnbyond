@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Volumes/Projects/React/bnbyond/server/logs/error/.bdfa9dfec8ab2d97488927cce31599594b51af11-audit.json",
+    "files": [
+        {
+            "date": 1667287046404,
+            "name": "/Volumes/Projects/React/bnbyond/server/logs/error/2022-11-01.log",
+            "hash": "2dd100f862f8a4999de17ed27e07e5c178b72d3fa1a3dd8f2f06e544765b850c"
+        },
+        {
+            "date": 1667478094426,
+            "name": "/Volumes/Projects/React/bnbyond/server/logs/error/2022-11-03.log",
+            "hash": "7c751369a17bd218b612a14e9c8c27a74f03aa48a04084c4c11b269eb5d2978f"
+        }
+    ],
+    "hashType": "sha256"
+}

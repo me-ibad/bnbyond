@@ -74,6 +74,11 @@ export default function SetPricing({ state, setState }) {
                 id='currency'
                 onChange={(e) => {
                   selectCurrency(e.target.value);
+
+                  setState((prevState) => ({
+                    ...prevState,
+                    userCurrency: e.target.value,
+                  }));
                 }}
                 value={from}
               >
@@ -88,18 +93,25 @@ export default function SetPricing({ state, setState }) {
 
             <div className='container'>
               <div className='left'>
-                <h3>Amount</h3>
+                <h3>Enter points</h3>
                 <input
                   type='number'
                   className='input-styl my-2'
                   placeholder='Enter the amount'
                   value={input}
-                  onChange={(e) => convert(e.target.value)}
+                  onChange={(e) => {
+                    convert(e.target.value);
+
+                    setState((prevState) => ({
+                      ...prevState,
+                      points: e.target.value,
+                    }));
+                  }}
                 />
               </div>
             </div>
             <div className='result'>
-              <h2>Converted Amount:</h2>${output.toFixed(4)} usd
+              <h2>Converted Amount in Your Currency:</h2>${output.toFixed(4)}{' '}
               {/* <p>{input + ' ' + from + ' = ' + output.toFixed(4) + ' ' + to}</p> */}
             </div>
           </div>

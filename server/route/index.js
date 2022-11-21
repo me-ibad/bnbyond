@@ -13,6 +13,9 @@ const postRoute = require("./postRoute");
 
 const socalQueryRoute = require("./socalQueryRoute");
 
+
+const propertyRoute = require('./propertyRoute');
+
 const { auth, checkApiKey, checkIsAdmin } = require("../middleware");
 
 module.exports = (controllers) => {
@@ -21,6 +24,10 @@ module.exports = (controllers) => {
   router.use("/email", emailRoutes(controllers.email));
 
   router.use("/post", postRoute(controllers.post));
+
+
+  router.use('/property', propertyRoute(controllers.property));
+
 
   router.use("/social", socalQueryRoute(controllers.soialQueries));
 

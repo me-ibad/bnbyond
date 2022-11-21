@@ -6,6 +6,7 @@ import Navbar from 'components/Navbars/AuthNavbar';
 import PropertyListing from 'pages/member/PropertyListing';
 import Nofound from 'pages/StaticPages/Nofound';
 import Footer from 'components/Footers/Footer';
+import ViewProperty from 'pages/member/ViewProperty';
 
 function Main() {
   return (
@@ -16,6 +17,7 @@ function Main() {
           <Routes>
             <Route path='/' element={<Landingpage />} />
             <Route path='/propertylisting' element={<PropertyListing />} />
+
             <Route path='*' element={<Nofound />} />
           </Routes>
         </section>

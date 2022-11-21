@@ -13,6 +13,15 @@ import Preview from './Preview';
 import AddTitle from './AddTitle';
 import SetPricing from './SetPricing';
 
+
+
+import { localStorageData } from 'services/auth/localStorageData';
+import { ImageEndPoint } from 'config/config';
+import { useMutation } from 'react-query';
+
+import userService from 'services/httpService/userAuth/userServices';
+import ErrorService from 'services/formatError/ErrorService';
+
 function PropertyListing() {
   let navigate = useNavigate();
 
@@ -27,13 +36,71 @@ function PropertyListing() {
     title: '',
     characteristics: [],
     price: '',
+    points: '',
+    userCurrency: '',
   });
 
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
+    if (activeStep === 0) {
+      if (state.propertyType === '') {
+        toast.error('Select Type');
+        return;
+      }
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 1) {
+      if (state.spaceType === '') {
+        toast.error('Select Space');
+        return;
+      }
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 2) {
+      if (state.address === '') {
+        toast.error('Enter Address');
+        return;
+      }
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 3) {
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 4) {
+      if (state.photos === '') {
+        toast.error('Select photos');
+        return;
+      }
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 5) {
+      if (state.title === '') {
+        toast.error('Enter Title');
+        return;
+      }
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 6) {
+      setActiveStep(activeStep + 1);
+    }
+
+    if (activeStep === 7) {
+      // if (state.price === '') {
+      //   toast.error('Enter Price');
+      //   return;
+      // }
+      setActiveStep(activeStep + 1);
+    }
+
+    // setActiveStep(activeStep + 1);
+  };;
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
@@ -65,8 +132,53 @@ function PropertyListing() {
     }
   };
 
+  const { mutate } = useMutation(
+    (token) => userService.commonPostService('/property/uploadProperty', token),
+    {
+      onError: (error) => {
+        toast.error(ErrorService.uniformError(error));
+      },
+      onSuccess: (data) => {
+        /// console.log(result);
+      },
+    }
+  );
+
   const onSubmit = () => {
     console.log(state);
+
+    const formData = new FormData();
+
+    state.amenities.forEach((item) =>
+      formData.append('amenities', JSON.stringify(item))
+    );
+    state.photos.forEach((item) => {
+      console.log('item================', item.file);
+
+      formData.append('pics', item.file);
+    });
+    state.characteristics.forEach((item) =>
+      formData.append('characteristics', JSON.stringify(item))
+    );
+
+    formData.append('address', state.address);
+    formData.append('lat', state.lat);
+    formData.append('long', state.long);
+    formData.append('price', state.price);
+    formData.append('propertyType', state.propertyType);
+    formData.append('spaceType', state.spaceType);
+    formData.append('title', state.title);
+
+    formData.append('points', state.points);
+    formData.append('userCurrency', state.userCurrency);
+
+    formData.append('userId', localStorageData('_id'));
+
+    mutate(formData);
+
+    for (const value of formData.values()) {
+      console.log(value);
+    }
   };
 
   return (
