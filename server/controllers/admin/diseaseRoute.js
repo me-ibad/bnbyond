@@ -1,5 +1,6 @@
-const { Disease, Expereince } = require("../../model");
+const { Disease, Expereince, User } = require("../../model");
 const { ObjectId } = require("mongodb");
+
 const addNewDisease = async (req, res) => {
   try {
     const { name, desc, keywords } = req.body;
@@ -284,6 +285,18 @@ const updateOneDisease = async (req, res) => {
   }
 };
 
+const fetchAllUser = async (req, res) => {
+  try {
+    let ALLUser = await User.find({}).select("-pass");
+
+    return res.status(200).json({ data: ALLUser });
+  } catch (err) {
+    console.log(err);
+
+    return res.status(400).json({ message: "something Went Wrong" });
+  }
+};
+
 module.exports = {
   addNewDisease,
   deleteOneDisease,
@@ -292,4 +305,5 @@ module.exports = {
   updateImageDisease,
   adminVerify,
   fetchDiseaseById,
+  fetchAllUser,
 };

@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 
   address: { type: String, default: null },
   cardInfo: { type: String, default: null },
-  contactNo: { type: String, default: null },
+  phoneNumber: { type: String, default: null },
 
   isEnable: { type: String, default: "yes" },
 

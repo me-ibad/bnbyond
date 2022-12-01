@@ -1,13 +1,13 @@
-const { ObjectId } = require('mongodb');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { User, ForgetPassword, EmailVerify } = require('../model');
-const { sendEmail } = require('../services/mailJetEmail');
-const { registerUser } = require('../services/userAuthService');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-var ba64 = require('ba64');
-const moment = require('moment-timezone');
+const { ObjectId } = require("mongodb");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { User, ForgetPassword, EmailVerify } = require("../model");
+const { sendEmail } = require("../services/mailJetEmail");
+const { registerUser } = require("../services/userAuthService");
+const { v4: uuidv4 } = require("uuid");
+const fs = require("fs");
+var ba64 = require("ba64");
+const moment = require("moment-timezone");
 
 const forgetPasswordVerify = async (req, res) => {
   // res.statusCode = 302;
@@ -28,16 +28,16 @@ const forgetPasswordVerify = async (req, res) => {
     if (Record_Exist) {
       res.statusCode = 302;
       res.setHeader(
-        'Location',
-        'http://smarttravel.ml/updatepass/saeedartists@gmail.com/6123a41d5f24473d75894753'
+        "Location",
+        "http://smarttravel.ml/updatepass/saeedartists@gmail.com/6123a41d5f24473d75894753"
       );
       res.end();
     } else {
-      res.send('no record found ');
+      res.send("no record found ");
     }
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'somrthing Went Wrong' });
+    return res.status(400).json({ message: "somrthing Went Wrong" });
   }
 };
 
@@ -50,7 +50,7 @@ const login = async (req, res) => {
 
     // Validate user input
     if (!(username && pass)) {
-      return res.status(400).json({ message: 'All input is required' });
+      return res.status(400).json({ message: "All input is required" });
     }
     // Validate if user exist in our database
     const user = await User.findOne({
@@ -64,7 +64,7 @@ const login = async (req, res) => {
       ],
     });
 
-    console.log('-----------------------');
+    console.log("-----------------------");
     console.log(user);
 
     if (user && user.pass && (await bcrypt.compare(pass, user.pass))) {
@@ -84,18 +84,18 @@ const login = async (req, res) => {
       // user
       res.status(200).json({ status: true, data: user });
     } else {
-      res.status(400).json({ message: 'Incorrect username name or pw' });
+      res.status(400).json({ message: "Incorrect username name or pw" });
     }
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
   // Our register logic ends here
 };
 
 const welcome = (req, res) => {
-  res.json('Welcome 🙌 ');
+  res.json("Welcome 🙌 ");
 };
 
 const deleteAllUsers = async (req, res) => {
@@ -115,13 +115,13 @@ const refreshToken = async (req, res) => {
         expiresIn: process.env.TOKEN_Time,
       }
     );
-    console.log('------------------------------------');
-    console.log('new token:' + token);
+    console.log("------------------------------------");
+    console.log("new token:" + token);
 
     return res.status(200).json(token);
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -131,7 +131,7 @@ const registerByFb = async (req, res) => {
 
     // Validate user input
     if (!(fname && email && id && pic)) {
-      return res.status(400).json({ message: 'All input are required' });
+      return res.status(400).json({ message: "All input are required" });
     }
 
     // check if user already exist
@@ -154,7 +154,7 @@ const registerByFb = async (req, res) => {
         return res.status(400).json({
           status: false,
           data: null,
-          message: 'Email is already exist',
+          message: "Email is already exist",
         });
       }
     } else {
@@ -178,13 +178,13 @@ const registerByFb = async (req, res) => {
         email: email.toLowerCase(),
         fbId: id,
         /////  pic: fileName + ".jpeg",
-        verify: 'yes',
-        registeredBy: 'facebook',
+        verify: "yes",
+        registeredBy: "facebook",
         username: username,
         counterId: counterId,
       });
 
-      console.log('Toen time  now', process.env.TOKEN_Time);
+      console.log("Toen time  now", process.env.TOKEN_Time);
 
       // Create token
       const token = jwt.sign(
@@ -203,7 +203,7 @@ const registerByFb = async (req, res) => {
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -213,7 +213,7 @@ const registerByGoogle = async (req, res) => {
 
     // Validate user input
     if (!(fname && email && id && pic)) {
-      return res.status(400).json({ message: 'All input are required' });
+      return res.status(400).json({ message: "All input are required" });
     }
 
     // check if user already exist
@@ -236,7 +236,7 @@ const registerByGoogle = async (req, res) => {
         return res.status(400).json({
           status: false,
           data: null,
-          message: 'User Already exist ',
+          message: "User Already exist ",
         });
       }
     } else {
@@ -259,14 +259,14 @@ const registerByGoogle = async (req, res) => {
         username: username,
         email: email.toLowerCase(),
         googleId: id,
-        registeredBy: 'google',
+        registeredBy: "google",
         ////   pic: fileName + ".jpeg",
-        verify: 'yes',
+        verify: "yes",
 
         counterId: counterId,
       });
 
-      console.log('Toen time  now', process.env.TOKEN_Time);
+      console.log("Toen time  now", process.env.TOKEN_Time);
 
       // Create token
       const token = jwt.sign(
@@ -285,7 +285,7 @@ const registerByGoogle = async (req, res) => {
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -297,7 +297,7 @@ const registerByEmail = async (req, res) => {
 
     // Validate user input
     if (!(email && pass && username && fname)) {
-      return res.status(400).json({ message: 'All input are required' });
+      return res.status(400).json({ message: "All input are required" });
     }
     let encryptedpass = await bcrypt.hash(pass, 10);
     // check if user already exist
@@ -316,8 +316,8 @@ const registerByEmail = async (req, res) => {
     if (oldUser) {
       return res.status(400).json({
         status: false,
-        data: 'Email is already exist',
-        message: 'Email is already exist',
+        data: "Email is already exist",
+        message: "Email is already exist",
       });
     } else {
       const lastRecord = await User.findOne().sort({ _id: -1 }).limit(1);
@@ -338,12 +338,12 @@ const registerByEmail = async (req, res) => {
         email: email.toLowerCase(),
 
         fname: fname,
-        registeredBy: 'email',
+        registeredBy: "email",
         pass: encryptedpass,
         counterId: counterId,
       });
 
-      console.log('Toen time  now', process.env.TOKEN_Time);
+      console.log("Toen time  now", process.env.TOKEN_Time);
 
       // Create token
       const token = jwt.sign(
@@ -366,9 +366,9 @@ const registerByEmail = async (req, res) => {
 
         uniquelink:
           process.env.websiteLink +
-          'api/email/verify/' +
+          "api/email/verify/" +
           email.toLowerCase() +
-          '/uniqueid/' +
+          "/uniqueid/" +
           VerifiedEmial._id,
       };
 
@@ -381,9 +381,9 @@ const registerByEmail = async (req, res) => {
       /// subject, data, emaile templete to select
       sendEmail(
         emailToSend,
-        'Welcome to Bnbyond',
+        "Welcome to Bnbyond",
         emailParameters,
-        'veerify_Email_Body'
+        "veerify_Email_Body"
       );
 
       return res.status(200).json({ status: true, data: user });
@@ -391,7 +391,7 @@ const registerByEmail = async (req, res) => {
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -403,7 +403,7 @@ const CheckEmailOrUsername = async (req, res) => {
 
     // Validate user input
     if (!username) {
-      return res.status(400).json({ message: 'All input are required' });
+      return res.status(400).json({ message: "All input are required" });
     }
 
     // check if user already exist
@@ -418,12 +418,12 @@ const CheckEmailOrUsername = async (req, res) => {
         },
       ],
     });
-    console.log('------------------old user');
+    console.log("------------------old user");
     console.log(oldUser);
     if (oldUser) {
       return res.status(400).json({
         status: false,
-        message: 'userName/Email Exist',
+        message: "userName/Email Exist",
         data: { userExist: true },
       });
     } else {
@@ -432,22 +432,18 @@ const CheckEmailOrUsername = async (req, res) => {
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
 const updateUserInfo = async (req, res) => {
   try {
-    let pic = req.files != '' ? req.files[0].filename : '';
+    let pic = req.files != "" ? req.files[0].filename : "";
 
     /////// console.log(req.body);
 
     // // Get user input
-    const { fname, lname, gender, userId } = req.body;
-
-    let bday = req.body.bday.includes('/')
-      ? moment(req.body.bday).format('DD/MM/yyyy')
-      : req.body.bday;
+    const { fname, lname, userId, address, phoneNumber } = req.body;
 
     let update;
 
@@ -455,16 +451,18 @@ const updateUserInfo = async (req, res) => {
       update = {
         fname: fname,
         lname: lname,
-        bday: bday,
-        gender: gender,
+        address,
+        phoneNumber,
+
         pic: pic,
       };
     } else {
       update = {
         fname: fname,
         lname: lname,
-        bday: bday,
-        gender: gender,
+
+        address,
+        phoneNumber,
       };
     }
 
@@ -477,7 +475,7 @@ const updateUserInfo = async (req, res) => {
     return res.status(200).json({ status: true, data: updatedUser });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -487,7 +485,7 @@ const deleteUserProfile = async (req, res) => {
     const { userId } = req.body;
 
     if (!userId) {
-      return res.status(400).json({ message: 'All input is required' });
+      return res.status(400).json({ message: "All input is required" });
     }
 
     const user = await User.findOne({
@@ -499,18 +497,18 @@ const deleteUserProfile = async (req, res) => {
         _id: userId,
       });
 
-      return res.status(200).json({ status: true, data: '' });
+      return res.status(200).json({ status: true, data: "" });
     } else {
       return res
         .status(400)
 
         .json({
-          message: 'User Not Exist',
+          message: "User Not Exist",
         });
     }
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -520,7 +518,7 @@ const updatePassFromProfile = async (req, res) => {
     const { oldPass, newPass, userId } = req.body;
 
     if (!(oldPass && newPass && userId)) {
-      return res.status(400).json({ message: 'All input is required' });
+      return res.status(400).json({ message: "All input is required" });
     }
 
     const user = await User.findOne({
@@ -546,12 +544,12 @@ const updatePassFromProfile = async (req, res) => {
         .status(400)
 
         .json({
-          message: 'You are not Allowed to change Password.',
+          message: "You are not Allowed to change Password.",
         });
     }
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -564,7 +562,7 @@ const updateUserPassword = async (req, res) => {
 
     // Validate user input
     if (!(email && pass)) {
-      return res.status(400).json({ message: 'All input is required' });
+      return res.status(400).json({ message: "All input is required" });
     }
     // Validate if user exist in our database
     const user = await User.findOne({
@@ -596,7 +594,7 @@ const updateUserPassword = async (req, res) => {
         });
 
         return res.status(200).json({
-          message: 'Password Has been Updated.Now please Login',
+          message: "Password Has been Updated.Now please Login",
           status: true,
         });
       } else {
@@ -604,18 +602,18 @@ const updateUserPassword = async (req, res) => {
           .status(400)
 
           .json({
-            message: 'You are not Allowed to change Password. Check your Email',
+            message: "You are not Allowed to change Password. Check your Email",
           });
       }
     } else {
       return res.status(400).json({
-        message: 'You are not Allowed to change Password. Check your Email',
+        message: "You are not Allowed to change Password. Check your Email",
       });
     }
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
   // Our register logic ends here
 };

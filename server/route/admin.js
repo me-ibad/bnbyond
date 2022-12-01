@@ -12,6 +12,12 @@ module.exports = (AdminController) => {
     AdminController.adminVerify
   );
 
+  adminRouter.get(
+    "/fetchAllUser",
+
+    AdminController.fetchAllUser
+  );
+
   adminRouter.post(
     "/addNewDisease",
     upload.array("pics"),

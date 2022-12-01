@@ -4,6 +4,7 @@ const {
   fetchallDisease,
   updateOneDisease,
   adminVerify,
+  fetchAllUser,
   updateImageDisease,
   fetchDiseaseById,
 } = require("./diseaseRoute");
@@ -31,4 +32,5 @@ module.exports = {
   updateOneTreatment,
   fetchallTreatmentByUserid,
   fetchDiseaseById,
+  fetchAllUser,
 };
