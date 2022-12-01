@@ -11,6 +11,7 @@ import { useMutation, useQuery } from 'react-query';
 import userServices from 'services/httpService/userAuth/userServices';
 import { toast } from 'react-toastify';
 import ErrorService from 'services/formatError/ErrorService';
+import Navbar from 'components/Navbars/AuthNavbar';
 
 export default function LandingPage() {
   const [allPost, setallPost] = React.useState([]);
@@ -67,7 +68,8 @@ export default function LandingPage() {
 
   return (
     <>
-      {/* <Navbar transparent /> */}
+      <Navbar />
+
       <main>
         <LandingHeader />
 

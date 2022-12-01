@@ -35,7 +35,7 @@ export default function PropertyAddress({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-red'
-            text='Where is your rentle propert located?'
+            text='where is your rentle propert located'
             color='text-[#e7b5b0]'
           />
         </Grid>

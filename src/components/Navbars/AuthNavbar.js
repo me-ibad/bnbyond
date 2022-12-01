@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import IndexDropdown from 'components/Dropdowns/IndexDropdown';
 import React from 'react';
 
 import { useNavigate, Link } from 'react-router-dom';
@@ -68,13 +69,13 @@ export default function Navbar(props) {
                 {localStorageData('_id') ? (
                   <a
                     className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
-                    onClick={() => {
-                      Logout();
+                    // onClick={() => {
+                    //   Logout();
 
-                      navigate('/');
-                    }}
+                    //   navigate('/');
+                    // }}
                   >
-                    Logout
+                    <IndexDropdown />
                   </a>
                 ) : (
                   <a
