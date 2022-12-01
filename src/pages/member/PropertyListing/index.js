@@ -12,6 +12,7 @@ import AddCharacteristics from './AddCharacteristics';
 import Preview from './Preview';
 import AddTitle from './AddTitle';
 import SetPricing from './SetPricing';
+
 import { localStorageData } from 'services/auth/localStorageData';
 import { ImageEndPoint } from 'config/config';
 import { useMutation } from 'react-query';
@@ -136,6 +137,9 @@ function PropertyListing() {
         toast.error(ErrorService.uniformError(error));
       },
       onSuccess: (data) => {
+        toast.success('Uploded');
+
+        navigate('/');
         /// console.log(result);
       },
     }
