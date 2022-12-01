@@ -67,17 +67,26 @@ code {
 .landing-text {
   @apply text-lg font-light leading-relaxed mt-0 mb-4 text-gray-600;
 }
-
+.card-styl {
+  @apply relative border border-color-grey flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg p-8;
+}
 input[type='file'] {
   display: none;
 }
 a {
   cursor: pointer;
 }
-
+.input-hidden {
+  border: 0;
+  outline: 0;
+  background-color: 'red';
+}
+.input-hidden:focus {
+  outline: none !important;
+}
 /* input[type='date']:in-range::-webkit-datetime-edit-year-field,input[type='date']:in-range::-webkit-datetime-edit-month-field,input[type='date']:in-range::-webkit-datetime-edit-day-field,input[type='date']:in-range::-webkit-datetime-edit-text{  color: transparent;} */
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-calendar-picker-indicator {
   position: absolute;
   top: 0;
   left: 0;

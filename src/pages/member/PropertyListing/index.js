@@ -1,65 +1,65 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
-import Container from "@mui/material/Container";
-import { toast } from "react-toastify";
-import PropertyType from "./PropertyType";
-import SpaceType from "./SpaceType";
-import PropertyAddress from "./PropertyAddress";
-import AddAmenities from "./AddAmenities";
-import AddImages from "./AddImages";
-import AddCharacteristics from "./AddCharacteristics";
-import Preview from "./Preview";
-import AddTitle from "./AddTitle";
-import SetPricing from "./SetPricing";
+import Container from '@mui/material/Container';
+import { toast } from 'react-toastify';
+import PropertyType from './PropertyType';
+import SpaceType from './SpaceType';
+import PropertyAddress from './PropertyAddress';
+import AddAmenities from './AddAmenities';
+import AddImages from './AddImages';
+import AddCharacteristics from './AddCharacteristics';
+import Preview from './Preview';
+import AddTitle from './AddTitle';
+import SetPricing from './SetPricing';
 
-import { localStorageData } from "services/auth/localStorageData";
-import { ImageEndPoint } from "config/config";
-import { useMutation } from "react-query";
+import { localStorageData } from 'services/auth/localStorageData';
+import { ImageEndPoint } from 'config/config';
+import { useMutation } from 'react-query';
 
-import userService from "services/httpService/userAuth/userServices";
-import ErrorService from "services/formatError/ErrorService";
+import userService from 'services/httpService/userAuth/userServices';
+import ErrorService from 'services/formatError/ErrorService';
 
 function PropertyListing() {
   let navigate = useNavigate();
 
   const [state, setState] = React.useState({
-    propertyType: "",
-    spaceType: "",
-    address: "",
-    lat: "",
-    long: "",
+    propertyType: '',
+    spaceType: '',
+    address: '',
+    lat: '',
+    long: '',
     amenities: [],
     photos: [],
-    title: "",
+    title: '',
     characteristics: [],
-    price: "",
-    points: "",
-    userCurrency: "",
+    price: '',
+    points: '',
+    userCurrency: '',
   });
 
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     if (activeStep === 0) {
-      if (state.propertyType === "") {
-        toast.error("Select Type");
+      if (state.propertyType === '') {
+        toast.error('Select Type');
         return;
       }
       setActiveStep(activeStep + 1);
     }
 
     if (activeStep === 1) {
-      if (state.spaceType === "") {
-        toast.error("Select Space");
+      if (state.spaceType === '') {
+        toast.error('Select Space');
         return;
       }
       setActiveStep(activeStep + 1);
     }
 
     if (activeStep === 2) {
-      if (state.address === "") {
-        toast.error("Enter Address");
+      if (state.address === '') {
+        toast.error('Enter Address');
         return;
       }
       setActiveStep(activeStep + 1);
@@ -70,16 +70,16 @@ function PropertyListing() {
     }
 
     if (activeStep === 4) {
-      if (state.photos === "") {
-        toast.error("Select photos");
+      if (state.photos === '') {
+        toast.error('Select photos');
         return;
       }
       setActiveStep(activeStep + 1);
     }
 
     if (activeStep === 5) {
-      if (state.title === "") {
-        toast.error("Enter Title");
+      if (state.title === '') {
+        toast.error('Enter Title');
         return;
       }
       setActiveStep(activeStep + 1);
@@ -131,15 +131,15 @@ function PropertyListing() {
   };
 
   const { mutate } = useMutation(
-    (token) => userService.commonPostService("/property/uploadProperty", token),
+    (token) => userService.commonPostService('/property/uploadProperty', token),
     {
       onError: (error) => {
         toast.error(ErrorService.uniformError(error));
       },
       onSuccess: (data) => {
-        toast.success("Uploded");
+        toast.success('Uploded');
 
-        navigate("/");
+        navigate('/');
         /// console.log(result);
       },
     }
@@ -151,29 +151,29 @@ function PropertyListing() {
     const formData = new FormData();
 
     state.amenities.forEach((item) =>
-      formData.append("amenities", JSON.stringify(item))
+      formData.append('amenities', JSON.stringify(item))
     );
     state.photos.forEach((item) => {
-      console.log("item================", item.file);
+      console.log('item================', item.file);
 
-      formData.append("pics", item.file);
+      formData.append('pics', item.file);
     });
     state.characteristics.forEach((item) =>
-      formData.append("characteristics", JSON.stringify(item))
+      formData.append('characteristics', JSON.stringify(item))
     );
 
-    formData.append("address", state.address);
-    formData.append("lat", state.lat);
-    formData.append("long", state.long);
-    formData.append("price", state.price);
-    formData.append("propertyType", state.propertyType);
-    formData.append("spaceType", state.spaceType);
-    formData.append("title", state.title);
+    formData.append('address', state.address);
+    formData.append('lat', state.lat);
+    formData.append('long', state.long);
+    formData.append('price', state.price);
+    formData.append('propertyType', state.propertyType);
+    formData.append('spaceType', state.spaceType);
+    formData.append('title', state.title);
 
-    formData.append("points", state.points);
-    formData.append("userCurrency", state.userCurrency);
+    formData.append('points', state.points);
+    formData.append('userCurrency', state.userCurrency);
 
-    formData.append("userId", localStorageData("_id"));
+    formData.append('userId', localStorageData('_id'));
 
     mutate(formData);
 
@@ -183,22 +183,22 @@ function PropertyListing() {
   };
 
   return (
-    <div className="min-h-screen">
-      <Container maxWidth="lg">
-        <div className="py-20">
-          <h1 className="text-3xl center-styl text-black font-bold tracking-wider">
+    <div className='min-h-screen'>
+      <Container maxWidth='lg'>
+        <div className='py-20'>
+          <h1 className='text-3xl center-styl text-black font-bold tracking-wider'>
             Property Listing
           </h1>
 
-          <div className="bg-white w-full container-post  p-10 my-6 ">
-            <div className="flex float-right">
-              <button className="btn-styl " type="button">
+          <div className='bg-white w-full container-post  p-10 my-6 '>
+            <div className='flex float-right'>
+              <button className='btn-styl ' type='button'>
                 Help
               </button>
               <button
-                className="btn-styl mx-10"
-                type="button"
-                onClick={() => navigate("/")}
+                className='btn-styl mx-10'
+                type='button'
+                onClick={() => navigate('/')}
               >
                 Exit
               </button>
@@ -207,9 +207,9 @@ function PropertyListing() {
             {getStepContent(activeStep)}
 
             {activeStep === steps.length - 1 ? (
-              <div className="flex center-styl my-10">
+              <div className='flex center-styl my-10'>
                 <button
-                  className="bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150"
+                  className='bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={() => onSubmit()}
                 >
                   Save Listing
@@ -217,10 +217,10 @@ function PropertyListing() {
               </div>
             ) : null}
 
-            <div className="flex center-styl my-6">
+            <div className='flex center-styl my-6'>
               {activeStep !== 0 && (
                 <button
-                  className="text-black font-bold mx-20"
+                  className='text-black font-bold mx-20'
                   onClick={handleBack}
                 >
                   Back
@@ -228,24 +228,24 @@ function PropertyListing() {
               )}
 
               {activeStep === steps.length - 1 ? (
-                ""
+                ''
               ) : (
                 <button
-                  className="bg-black rounded py-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150"
+                  className='bg-black rounded py-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={handleNext}
                 >
-                  {activeStep === steps.length - 1 ? "Next" : "Next"}
+                  {activeStep === steps.length - 1 ? 'Next' : 'Next'}
                 </button>
               )}
             </div>
 
-            <div className="flex flex-row center-styl ">
+            <div className='flex flex-row center-styl '>
               {steps.map((item) => (
                 <>
                   {activeStep == item - 1 ? (
-                    <div className="bg-color-primary h-1.5 w-7 rounded mx-1" />
+                    <div className='bg-color-primary h-1.5 w-7 rounded mx-1' />
                   ) : (
-                    <div className="text-lg text-color-dotgrey mx-1">
+                    <div className='text-lg text-color-dotgrey mx-1'>
                       &#8226;
                     </div>
                   )}

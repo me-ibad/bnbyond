@@ -18,7 +18,7 @@ export default function AddCharacteristics({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-green'
-            text='Add some descriptive word'
+            text='Keywords to highlight your spot'
             color='text-[#709a70]'
           />
         </Grid>

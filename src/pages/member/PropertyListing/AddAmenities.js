@@ -22,8 +22,7 @@ export default function AddAmenities({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-green'
-            text='  What Cool featuers or amenities should you fellow members know
-            about'
+            text='What Cool featuers or amenities should you fellow members know about'
             color='text-[#709a70]'
           />
         </Grid>

@@ -17,7 +17,7 @@ export default function SpaceType({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-blue'
-            text='What kind of space can your fellow members expert?'
+            text='What kind of space can your fellow members expert'
             color='text-[#1e666f]'
           />
         </Grid>

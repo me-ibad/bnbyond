@@ -28,7 +28,7 @@ export default function AddImages({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-yellow'
-            text='What kind of property it is'
+            text='Cool views of your property'
             color='text-[#ead1a3]'
           />
         </Grid>
