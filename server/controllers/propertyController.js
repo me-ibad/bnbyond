@@ -1,4 +1,4 @@
-const { ObjectId } = require('mongodb');
+const { ObjectId } = require("mongodb");
 
 const {
   Post,
@@ -7,10 +7,10 @@ const {
   subexpereince,
   Property,
   User,
-} = require('../model');
+} = require("../model");
 
-const { fetchSinglePost } = require('./common');
-const moment = require('moment-timezone');
+const { fetchSinglePost } = require("./common");
+const moment = require("moment-timezone");
 
 const uploadProperty = async (req, res) => {
   try {
@@ -37,7 +37,7 @@ const uploadProperty = async (req, res) => {
     req.body.pics = propertyPics;
 
     req.body.loc = {
-      type: 'Point',
+      type: "Point",
       coordinates: [parseFloat(req.body.long), parseFloat(req.body.lat)],
     };
 
@@ -45,12 +45,12 @@ const uploadProperty = async (req, res) => {
 
     return res.status(200).json({
       status: true,
-      data: 'completed',
+      data: "completed",
     });
   } catch (err) {
     console.log(err);
 
-    return res.status(400).json({ message: 'something Went Wrong' });
+    return res.status(400).json({ message: "something Went Wrong" });
   }
 };
 
@@ -59,18 +59,18 @@ const getAllProperty = async (req, res) => {
 
   let Fetch;
 
-  if (lat != '0') {
+  if (lat != "0") {
     Fetch = await Property.aggregate([
       {
         $geoNear: {
           near: {
-            type: 'Point',
+            type: "Point",
             coordinates: [
               parseFloat(req.params.long),
               parseFloat(req.params.lat),
             ],
           },
-          distanceField: 'dist.calculated',
+          distanceField: "dist.calculated",
           maxDistance: parseInt(km),
           //// query: { category: "Parks" },
           /// includeLocs: "dist.location",
@@ -84,16 +84,16 @@ const getAllProperty = async (req, res) => {
 
       {
         $lookup: {
-          from: 'users',
-          localField: 'userId',
-          foreignField: '_id',
-          as: 'user',
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "user",
         },
       },
 
-      { $unwind: '$user' },
+      { $unwind: "$user" },
 
-      { $unset: ['user.pass'] },
+      { $unset: ["user.pass"] },
     ]);
   } else {
     Fetch = await Property.aggregate([
@@ -103,16 +103,16 @@ const getAllProperty = async (req, res) => {
 
       {
         $lookup: {
-          from: 'users',
-          localField: 'userId',
-          foreignField: '_id',
-          as: 'user',
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "user",
         },
       },
 
-      { $unwind: '$user' },
+      { $unwind: "$user" },
 
-      { $unset: ['user.pass'] },
+      { $unset: ["user.pass"] },
     ]);
   }
 
@@ -129,16 +129,41 @@ const getPropertyByUserId = async (req, res) => {
 
     {
       $lookup: {
-        from: 'users',
-        localField: 'userId',
-        foreignField: '_id',
-        as: 'user',
+        from: "users",
+        localField: "userId",
+        foreignField: "_id",
+        as: "user",
       },
     },
 
-    { $unwind: '$user' },
+    { $unwind: "$user" },
 
-    { $unset: ['user.pass'] },
+    { $unset: ["user.pass"] },
+  ]);
+
+  return res.status(200).json({ status: true, data: Fetch });
+};
+
+const getPropertyByPropertyId = async (req, res) => {
+  const { Id } = req.params;
+
+  let Fetch = await Property.aggregate([
+    {
+      $match: { _id: ObjectId(Id) },
+    },
+
+    {
+      $lookup: {
+        from: "users",
+        localField: "userId",
+        foreignField: "_id",
+        as: "user",
+      },
+    },
+
+    { $unwind: "$user" },
+
+    { $unset: ["user.pass"] },
   ]);
 
   return res.status(200).json({ status: true, data: Fetch });
@@ -148,4 +173,5 @@ module.exports = {
   uploadProperty,
   getAllProperty,
   getPropertyByUserId,
+  getPropertyByPropertyId,
 };
