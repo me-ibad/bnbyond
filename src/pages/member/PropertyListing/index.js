@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import { toast } from 'react-toastify';
 import PropertyType from './PropertyType';
@@ -66,11 +66,15 @@ function PropertyListing() {
     }
 
     if (activeStep === 3) {
+      if (state.amenities.length === 0) {
+        toast.error('Select amenities');
+        return;
+      }
       setActiveStep(activeStep + 1);
     }
 
     if (activeStep === 4) {
-      if (state.photos === '') {
+      if (state.photos.length === 0) {
         toast.error('Select photos');
         return;
       }
@@ -86,15 +90,20 @@ function PropertyListing() {
     }
 
     if (activeStep === 6) {
+      if (state.characteristics.length === 0) {
+        toast.error('Select Characteristics');
+        return;
+      }
       setActiveStep(activeStep + 1);
     }
 
     if (activeStep === 7) {
-      // if (state.price === '') {
-      //   toast.error('Enter Price');
-      //   return;
-      // }
+      if (state.userCurrency === '') {
+        toast.error('Enter Price');
+        return;
+      }
       setActiveStep(activeStep + 1);
+      
     }
 
     // setActiveStep(activeStep + 1);
@@ -130,7 +139,7 @@ function PropertyListing() {
     }
   };
 
-  const { mutate } = useMutation(
+  const { mutate,isLoading } = useMutation(
     (token) => userService.commonPostService('/property/uploadProperty', token),
     {
       onError: (error) => {
@@ -208,12 +217,13 @@ function PropertyListing() {
 
             {activeStep === steps.length - 1 ? (
               <div className='flex center-styl my-10'>
-                <button
+                
+                {isLoading? <CircularProgress />:<button
                   className='bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={() => onSubmit()}
                 >
                   Save Listing
-                </button>
+                </button> }
               </div>
             ) : null}
 

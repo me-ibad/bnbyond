@@ -49,7 +49,7 @@ export default function SetPricing({ state, setState }) {
       `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${value}.json`
     ).then((res) => {
       setInfo(res.data[value]);
-      console.log(res.data[value]);
+      console.log(res.data[value],'my value');
     });
   };
 
@@ -111,7 +111,11 @@ export default function SetPricing({ state, setState }) {
               </div>
             </div>
             <div className='result'>
-              <h2>Converted Amount in Your Currency:</h2>${output.toFixed(4)}{' '}
+              <h2>Converted Amount in Your Currency:</h2>
+              {
+                output?output.toFixed(4):0
+              }
+               {/* ${output.toFixed(4)}{' '} */}
               {/* <p>{input + ' ' + from + ' = ' + output.toFixed(4) + ' ' + to}</p> */}
             </div>
           </div>
