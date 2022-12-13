@@ -15,6 +15,7 @@ import PropertyDetails from 'pages/customer/PropertyDetails';
 import Member from './Member';
 import LandingPage from 'pages/Landingpage';
 import Admin from './Admin';
+import BnbNav from 'components/NavBar/BnbNav';
 
 function Root() {
   // let location = useLocation();
@@ -26,6 +27,8 @@ function Root() {
   //   }
   // }, [location, navigate]);
   return (
+  <>
+
     <Router history={history}>
       <Routes>
         <Route path='/*' element={<Main />} />
@@ -33,11 +36,14 @@ function Root() {
         <Route path='admin/*' element={<Admin />} />
 
         <Route path='member/*' element={<Member />} />
-        <Route path='/' element={<LandingPage />} />
+        {/* <Route path='/' element={<LandingPage />} /> */}
+        <Route path='/BnbNav' element={<BnbNav />} />
 
-        <Route path='/propertydetails/:id' element={<PropertyDetails />} />
+        {/* <Route path='/propertydetails/:id' element={<PropertyDetails />} /> */}
       </Routes>
     </Router>
+
+    </>
   );
 }
 

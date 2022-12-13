@@ -11,6 +11,7 @@ import { useMutation, useQuery } from 'react-query';
 import userServices from 'services/httpService/userAuth/userServices';
 import { toast } from 'react-toastify';
 import ErrorService from 'services/formatError/ErrorService';
+import { Slide } from 'react-slideshow-image';
 import Navbar from 'components/Navbars/AuthNavbar';
 
 export default function LandingPage() {

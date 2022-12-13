@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import userServices from "services/httpService/userAuth/userServices";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ImageEndPoint } from "config/config";
+import BnbNav from "components/NavBar/BnbNav";
 
 function PropertyDetails() {
   const [allPost, setallPost] = React.useState([]);
@@ -45,11 +46,13 @@ function PropertyDetails() {
     zoom: 11,
   };
   return (
+   
     <main className="relative w-full  h-full  min-h-screen my-10">
       {allPost == "" ? (
         <CircularProgress />
       ) : (
         <>
+
           <section>
             <Container maxWidth="xl">
               <Grid container spacing={2}>

@@ -114,3 +114,28 @@
     /* margin-top: 100px; */
   }
 }
+
+
+.root .arrowWrapper{
+  border: 2px solid rgb(37, 230, 3)!important;
+  color: rgb(4, 193, 130) !important;
+  background-color:darkorchid !important;
+}
+
+
+/* Bnb NavBar */
+.bnbNvar_wrapper{
+  background-color: #007AA2;
+}
+.bnbNav-items li{
+padding: 0px 30px;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+  .bnbNav-items li{
+    padding: 0px 10px;
+    font-size: 13px;
+    }
+   
+}

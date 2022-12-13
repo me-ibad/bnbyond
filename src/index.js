@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'assets/css/App.css';
 import 'assets/fonts/Poppins-Regular.ttf';
 import 'react-multi-carousel/lib/styles.css';
-
+import 'react-slideshow-image/dist/styles.css'
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';

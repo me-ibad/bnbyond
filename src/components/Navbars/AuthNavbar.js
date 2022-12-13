@@ -18,7 +18,7 @@ export default function Navbar(props) {
       <nav className='top-0 absolute z-50 w-full flex flex-wrap items-center  justify-between px-2 py-3 navbar-expand-lg'>
         <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
           <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
-            <Link
+            {/* <Link
               className='text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase'
               to='/'
             >
@@ -26,7 +26,7 @@ export default function Navbar(props) {
                 className='w-full h-12 object-cover '
                 src={require('assets/img/whitelogo.png')}
               />
-            </Link>
+            </Link> */}
             <button
               className='cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
               type='button'
@@ -61,11 +61,11 @@ export default function Navbar(props) {
                   target='_blank'
                 >
                   {/* <i className='lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg ' /> */}
-                  <span className=' inline-block ml-2'>About {} </span>
+                  {/* <span className=' inline-block ml-2'>About  </span> */}
                 </a>
               </li>
 
-              <li className='flex items-center'>
+              {/* <li className='flex items-center'>
                 {localStorageData('_id') ? (
                   <a
                     className='lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
@@ -91,7 +91,7 @@ export default function Navbar(props) {
                     </span>
                   </a>
                 )}
-              </li>
+              </li> */}
 
               {/* <li className='flex items-center'>
                 <button

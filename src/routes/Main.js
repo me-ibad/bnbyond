@@ -10,10 +10,14 @@ import ViewProperty from 'pages/member/ViewProperty';
 import Profile from 'pages/customer/Profile';
 import VerificationPage from 'pages/customer/VerificationPage';
 import SearchListings from 'pages/customer/SearchListings';
-
+import ImageSlidertest from 'components/ImageSlidertest/ImageSlidertest';
+import BnbNav from 'components/NavBar/BnbNav';
+import LandingPage from 'pages/Landingpage';
+import PropertyDetails from 'pages/customer/PropertyDetails';
 function Main() {
   return (
     <>
+    <BnbNav/>
       <main>
         <section className='relative w-full  h-full  min-h-screen '>
           <Routes>
@@ -21,6 +25,10 @@ function Main() {
             <Route path='/profile' element={<Profile />} />
             <Route path='/verification' element={<VerificationPage />} />
             <Route path='/search/:lat/:long' element={<SearchListings />} />
+            <Route path='/ImageSlidertest' element={<ImageSlidertest />} />
+            <Route path='/BnbNav' element={<BnbNav />} />
+             <Route path='/' element={<LandingPage />} />
+             <Route path='/propertydetails/:id' element={<PropertyDetails />} />
 
             <Route path='*' element={<Nofound />} />
           </Routes>
