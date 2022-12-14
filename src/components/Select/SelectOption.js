@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function SelectOption({ data, onSelect }) {
+export default function SelectOption({ data, onSelect,spaceType }) {
   const [userOption, setUserOption] = useState(null);
   const [checked, onChange] = React.useState(false);
 
@@ -15,7 +15,7 @@ export default function SelectOption({ data, onSelect }) {
           <a
             onClick={() => selectHandler(item.value)}
             className={` w-40 h-40 flex center-styl bg-color-grey p-4  ${
-              item.value === userOption
+              item.value === userOption||spaceType===item.value
                 ? `border-8 border-color-yellow `
                 : 'border-0'
             }`}

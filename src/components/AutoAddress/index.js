@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 import usePlacesAutocomplete, {
   getGeocode,
@@ -9,7 +10,9 @@ function AutoAddress(props) {
   // const [address, setaddress] = useState(localStorageData('address'));
 
   // const { label, onChange, setaddress, address } = props;
-
+  useEffect(() => {
+    setValue(props.address);
+  }, []);
   const {
     ready,
     value,

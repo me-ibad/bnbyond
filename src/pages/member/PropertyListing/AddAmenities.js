@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import SelectBox from 'components/Select/SelectBox';
 import ListingColor from 'components/Cards/ListingColor';
@@ -15,7 +15,12 @@ export default function AddAmenities({ state, setState }) {
     setState((prevState) => ({ ...prevState, amenities: values }));
     console.log(values);
   };
-
+ 
+  useEffect(() => {
+    state.amenities.map((item) =>(
+   console.log("saeed",item)
+  ));
+  },[]);
   return (
     <div>
       <Grid container spacing={2}>

@@ -28,7 +28,8 @@ export default function PropertyAddress({ state, setState }) {
     setState((prevState) => ({ ...prevState, lat: lat }));
     setState((prevState) => ({ ...prevState, long: long }));
   };
-
+console.log(state.lat)
+console.log(state.long)
   return (
     <div>
       <Grid container spacing={2}>
@@ -58,6 +59,7 @@ export default function PropertyAddress({ state, setState }) {
                   className='p-3 rounded-full w-72 shadow-xl text-center text-xl placeholder:text-xl'
                   placeholder='Enter your Address'
                   changeaddress={changeAddress}
+                  address={state.address}
                 />
               </div>
             </GoogleMapReact>

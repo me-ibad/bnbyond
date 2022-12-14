@@ -5,11 +5,11 @@ import ListingColor from 'components/Cards/ListingColor';
 
 export default function SetPricing({ state, setState }) {
   const [info, setInfo] = useState([]);
-  const [input, setInput] = useState(0);
+  // const [input, setInput] = useState(0);
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('usd');
-  const [options, setOptions] = useState([]);
-  const [output, setOutput] = useState(0);
+ ///// const [options, setOptions] = useState([]);
+  ////const [output, setOutput] = useState(0);
 
   // Calling the api whenever the dependency changes
   //   useEffect(() => {
@@ -29,26 +29,46 @@ export default function SetPricing({ state, setState }) {
 
   // Function to convert the currency
   function convert(value) {
-    setInput(value);
-    var rate = info[to];
-    setOutput(value * rate);
+    // setInput(value);
+    setState((prevState) => ({
+      ...prevState,
+      input:value,
+    }));
+    var rate = state.info[state.to];
+
+
+   //// setOutput(value * rate);
+
+   setState((prevState) => ({
+    ...prevState,
+    
+    output:value * rate,
+  }));
   }
 
   // Function to switch between two currency
-  function flip() {
-    var temp = from;
-    setFrom(to);
-    setTo(temp);
-  }
+  // function flip() {
+  //   var temp = from;
+  //   setFrom(to);
+  //   setTo(temp);
+  // }
 
   const selectCurrency = (value) => {
-    setFrom(value);
+    // setFrom(value);
+    setState((prevState) => ({
+      ...prevState,
+      from:value,
+    }));
     convert('');
     console.log(value);
     Axios.get(
       `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${value}.json`
     ).then((res) => {
-      setInfo(res.data[value]);
+      // setInfo(res.data[value]);
+      setState((prevState) => ({
+        ...prevState,
+        info:res.data[value],
+      }));
       console.log(res.data[value],'my value');
     });
   };
@@ -78,9 +98,11 @@ export default function SetPricing({ state, setState }) {
                   setState((prevState) => ({
                     ...prevState,
                     userCurrency: e.target.value,
+                    points:0,
+                   //// output:0
                   }));
                 }}
-                value={from}
+                value={state.userCurrency}
               >
                 <option value=''>--Please choose an option--</option>
                 <option value='usd'>usd</option>
@@ -98,23 +120,30 @@ export default function SetPricing({ state, setState }) {
                   type='number'
                   className='input-styl my-2'
                   placeholder='Enter the amount'
-                  value={input}
+                  value={state.points}
                   onChange={(e) => {
+
+                   
+
                     convert(e.target.value);
 
                     setState((prevState) => ({
                       ...prevState,
                       points: e.target.value,
                     }));
+
+                  
                   }}
                 />
               </div>
             </div>
             <div className='result'>
-              <h2>Converted Amount in Your Currency:</h2>
+              <h2 >Converted Amount in Your Currency:</h2>
+              <p value={state.output}>
               {
-                output?output.toFixed(4):0
+                state.output?state.output.toFixed(4):0
               }
+              </p>
                {/* ${output.toFixed(4)}{' '} */}
               {/* <p>{input + ' ' + from + ' = ' + output.toFixed(4) + ' ' + to}</p> */}
             </div>

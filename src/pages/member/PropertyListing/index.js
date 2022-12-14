@@ -24,7 +24,7 @@ function PropertyListing() {
   let navigate = useNavigate();
 
   const [state, setState] = React.useState({
-    propertyType: '',
+    propertyType: "boat",
     spaceType: '',
     address: '',
     lat: '',
@@ -36,6 +36,11 @@ function PropertyListing() {
     price: '',
     points: '',
     userCurrency: '',
+    info:[],
+    input:0,
+    from:'',
+    to:'usd',
+    output:0,
   });
 
   const [activeStep, setActiveStep] = React.useState(0);

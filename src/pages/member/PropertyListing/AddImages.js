@@ -13,7 +13,12 @@ export default function AddImages({ state, setState }) {
     setState((prevState) => ({ ...prevState, photos: incommingFiles }));
   };
   const onDelete = (id) => {
-    setFiles(files.filter((x) => x.id !== id));
+
+    console.log("id value is",id)
+    setState((prevState) => ({ ...prevState, photos: state.photos.filter((x) => x.id !== id) }));
+
+
+  
   };
   const handleSee = (imageSource) => {
     setImageSrc(imageSource);
@@ -75,7 +80,7 @@ export default function AddImages({ state, setState }) {
             <FullScreenPreview
               imgSource={imageSrc}
               openImage={imageSrc}
-              onClose={(e) => handleSee(undefined)}
+              onClose={(e) => handleSee}
             />
           </div>
         </Grid>

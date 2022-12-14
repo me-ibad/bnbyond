@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function SelectBox({ data, onSelect }) {
+export default function SelectBox({ data, onSelect ,propertyType}) {
   const [userOption, setUserOption] = useState(null);
   const selectHandler = (value) => {
     onSelect(value);
@@ -12,7 +12,7 @@ export default function SelectBox({ data, onSelect }) {
         return (
           <div
             className={` m-1  ${
-              item.value === userOption
+              item.value === userOption || propertyType===item.value
                 ? `border-8 border-color-yellow `
                 : 'border-0'
             }`}

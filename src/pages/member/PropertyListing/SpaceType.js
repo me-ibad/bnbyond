@@ -25,6 +25,7 @@ export default function SpaceType({ state, setState }) {
           <div className='mt-20'>
             <SelectOption
               data={data}
+              spaceType={state.spaceType}
               onSelect={(value) =>
                 setState((prevState) => ({ ...prevState, spaceType: value }))
               }

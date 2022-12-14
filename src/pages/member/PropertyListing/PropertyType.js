@@ -30,9 +30,11 @@ export default function PropertyType({ state, setState }) {
           <div className='mt-16'>
             <SelectBox
               data={data}
+              propertyType={state.propertyType}
               onSelect={(value) =>
                 setState((prevState) => ({ ...prevState, propertyType: value }))
               }
+             
             />
           </div>
         </Grid>
