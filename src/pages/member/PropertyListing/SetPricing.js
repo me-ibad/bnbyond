@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Axios from 'axios';
 import ListingColor from 'components/Cards/ListingColor';
+import { Alert, alertTitleClasses } from '@mui/material';
 
 export default function SetPricing({ state, setState }) {
   const [info, setInfo] = useState([]);
@@ -12,6 +13,8 @@ export default function SetPricing({ state, setState }) {
   ////const [output, setOutput] = useState(0);
 
   // Calling the api whenever the dependency changes
+
+
   //   useEffect(() => {
   //     Axios.get(
   //       `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`
@@ -28,16 +31,33 @@ export default function SetPricing({ state, setState }) {
   //   }, [info]);
 
   // Function to convert the currency
+
+
+
+     useEffect(() => {
+      if(state.userCurrency){
+
+       
+
+        selectCurrency(state.userCurrency)
+      }
+    }, []);
+
+ 
+
   function convert(value) {
     // setInput(value);
     setState((prevState) => ({
       ...prevState,
       input:value,
     }));
-    var rate = state.info[state.to];
+    var rate = state.info[state.userCurrency];
 
 
    //// setOutput(value * rate);
+
+   console.log("value * ratevalue * rate----------------------------",value)
+   console.log("value * ratevalue * rate----------------------------",state.to)
 
    setState((prevState) => ({
     ...prevState,
@@ -54,13 +74,16 @@ export default function SetPricing({ state, setState }) {
   // }
 
   const selectCurrency = (value) => {
+
     // setFrom(value);
     setState((prevState) => ({
       ...prevState,
       from:value,
     }));
-    convert('');
+   //// convert('');
     console.log(value);
+
+
     Axios.get(
       `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${value}.json`
     ).then((res) => {
@@ -68,8 +91,9 @@ export default function SetPricing({ state, setState }) {
       setState((prevState) => ({
         ...prevState,
         info:res.data[value],
+
       }));
-      console.log(res.data[value],'my value');
+      console.log(res.data[value],'my value000000--------------------------');
     });
   };
 
@@ -99,7 +123,8 @@ export default function SetPricing({ state, setState }) {
                     ...prevState,
                     userCurrency: e.target.value,
                     points:0,
-                   //// output:0
+                    to:e.target.value,
+                    output:0
                   }));
                 }}
                 value={state.userCurrency}

@@ -3,10 +3,11 @@ import Grid from '@mui/material/Grid';
 import SelectBox from 'components/Select/SelectBox';
 import ListingColor from 'components/Cards/ListingColor';
 import MultiSelect from 'components/Select/MultiSelect';
-import { AmenitiesData } from 'data/AmenitiesData';
 
-export default function AddAmenities({ state, setState }) {
-  const [data, setData] = useState(AmenitiesData);
+
+export default function AddAmenities({ state, setState,AddAmenities}) {
+  console.log(AddAmenities)
+  const [data, setData] = useState(AddAmenities);
 
   // console.log(data);
   // setState((prevState) => ({ ...prevState, amenities: data }));

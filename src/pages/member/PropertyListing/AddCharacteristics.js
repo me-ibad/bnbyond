@@ -3,9 +3,9 @@ import Grid from '@mui/material/Grid';
 
 import ListingColor from 'components/Cards/ListingColor';
 import MultiSelect from 'components/Select/MultiSelect';
-import { CharacteristicsData } from 'data/CharacteristicsData';
-export default function AddCharacteristics({ state, setState }) {
-  const [data, setData] = useState(CharacteristicsData);
+// import { CharacteristicsData } from 'data/CharacteristicsData';
+export default function AddCharacteristics({ state, setState,AddCharacteristics}) {
+  const [data, setData] = useState(AddCharacteristics);
 
   const onSelect = (values) => {
     setState((prevState) => ({ ...prevState, characteristics: values }));

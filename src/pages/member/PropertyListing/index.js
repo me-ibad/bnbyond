@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect}from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
@@ -12,38 +12,147 @@ import AddCharacteristics from './AddCharacteristics';
 import Preview from './Preview';
 import AddTitle from './AddTitle';
 import SetPricing from './SetPricing';
+import Axios from 'axios';
 
 import { localStorageData } from 'services/auth/localStorageData';
 import { ImageEndPoint } from 'config/config';
 import { useMutation } from 'react-query';
-
+import {useLocation} from 'react-router-dom';
 import userService from 'services/httpService/userAuth/userServices';
 import ErrorService from 'services/formatError/ErrorService';
+import { AmenitiesData } from 'data/AmenitiesData';
+import { CharacteristicsData } from 'data/CharacteristicsData';
+import { alertClasses } from '@mui/material';
 
 function PropertyListing() {
   let navigate = useNavigate();
+  const location = useLocation();
+  // const {offerState}=location.state
+  // console.log('state value is',offerState)
+  console.log(location.state,'location state value')
+
+
+  const propertyData=location.state?location.state.offerState:null
+  console.log(propertyData,"property data is")
+//  if(location.state==null){
+//   location.state=null
+//  }
+//  else{
+//   const {offerState}=location.state
+
+
+
+//  }
+
+
+
+
+const toDataURL = url => fetch(url)
+      .then(response => response.blob())
+      .then(blob => new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve(reader.result)
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+     }))
+
+
+
+
+  function dataURLtoFile(dataurl, filename) {
+     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+     bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+     while(n--){
+     u8arr[n] = bstr.charCodeAt(n);
+     }
+   return new File([u8arr], filename, {type:mime});
+  }
+
+
+
+
+  
+
+
+   useEffect(()=>{
+
+    if(propertyData){
+
+      
+
+      let arr=[]
+
+      for (let i = 0; i < propertyData.pics.length; i++) {
+        toDataURL(ImageEndPoint+propertyData.pics[i])
+    .then(dataUrl => {
+       ////console.log('Here is Base64 Url', dataUrl)
+       var fileData = dataURLtoFile(dataUrl, `any_name_${(new Date().toJSON().slice(0,10))}.jpg`);
+       /////console.log("Here is JavaScript File Object",fileData)
+ 
+       arr.push({file:fileData,errors:[],id:i+1,valid:true})
+
+       console.log("-------------------------------",arr)
+
+   
+       
+     })
+
+
+      }
+
+
+      setState((prevState) => ({ ...prevState, photos:arr}));
+
+      // Axios.get(
+      //   `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${state.userCurrency}.json`
+      // ).then((res) => {
+      //   // setInfo(res.data[value]);
+      //   setState((prevState) => ({
+      //     ...prevState,
+      //     info:res.data[state.userCurrency],
+      //   }));
+      //   console.log(res.data[state.userCurrency],'my value--------------------------------------------');
+      // });
+  
+
+    
+    }
+    
+
+
+   
+   },[])
+
+
+   console.log("propertyData.pricepropertyData.pricepropertyData.pricepropertyData.price",propertyData?propertyData.price:0)
 
   const [state, setState] = React.useState({
-    propertyType: "boat",
-    spaceType: '',
-    address: '',
-    lat: '',
-    long: '',
-    amenities: [],
+    propertyType: propertyData?propertyData.propertyType:'',
+    spaceType: propertyData?propertyData.spaceType:'',
+    address:propertyData?propertyData.address: '',
+    lat:propertyData?propertyData.loc.coordinates[1]: '',
+    long:propertyData?propertyData.loc.coordinates[0]: '',
+    amenities:propertyData?propertyData.amenities: [],
     photos: [],
-    title: '',
-    characteristics: [],
-    price: '',
-    points: '',
-    userCurrency: '',
+    title: propertyData?propertyData.title:'',
+    characteristics:propertyData?propertyData.characteristics:[],
+    ////price:propertyData?propertyData.price: 0,
+    points:propertyData?propertyData.points: '',
+    userCurrency:propertyData?propertyData.userCurrency: '',
     info:[],
-    input:0,
-    from:'',
-    to:'usd',
-    output:0,
+    input:propertyData?propertyData.input: 0,
+    from:propertyData?propertyData.from:'',
+    to:propertyData?propertyData.to:'usd',
+    output:propertyData?propertyData.price:0,
+
+
   });
 
   const [activeStep, setActiveStep] = React.useState(0);
+
+
+
+  
 
   const handleNext = () => {
     if (activeStep === 0) {
@@ -128,13 +237,13 @@ function PropertyListing() {
       case 2:
         return <PropertyAddress state={state} setState={setState} />;
       case 3:
-        return <AddAmenities state={state} setState={setState} />;
+        return <AddAmenities state={state} setState={setState} AddAmenities={propertyData?propertyData.amenities:AmenitiesData} />;
       case 4:
         return <AddImages state={state} setState={setState} />;
       case 5:
         return <AddTitle state={state} setState={setState} />;
       case 6:
-        return <AddCharacteristics state={state} setState={setState} />;
+        return <AddCharacteristics state={state} setState={setState} AddCharacteristics={propertyData?propertyData.characteristics:CharacteristicsData} />;
       case 7:
         return <SetPricing state={state} setState={setState} />;
       case 8:
@@ -179,17 +288,22 @@ function PropertyListing() {
     formData.append('address', state.address);
     formData.append('lat', state.lat);
     formData.append('long', state.long);
-    formData.append('price', state.price);
+    formData.append('price', state.output);
     formData.append('propertyType', state.propertyType);
     formData.append('spaceType', state.spaceType);
     formData.append('title', state.title);
-
     formData.append('points', state.points);
     formData.append('userCurrency', state.userCurrency);
 
     formData.append('userId', localStorageData('_id'));
+    
+if(propertyData){
 
-    mutate(formData);
+  formData.append('propertyId', propertyData._id);
+}
+
+
+     mutate(formData);
 
     for (const value of formData.values()) {
       console.log(value);
@@ -227,7 +341,9 @@ function PropertyListing() {
                   className='bg-color-red rounded p-2 px-4 text-white shadow hover:shadow-lg mr-1 mb-1  ease-linear transition-all duration-150'
                   onClick={() => onSubmit()}
                 >
-                  Save Listing
+                  {
+                    propertyData?"Update Listing":"Save Listing"
+                  }
                 </button> }
               </div>
             ) : null}
