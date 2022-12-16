@@ -42,6 +42,7 @@ function BnbNav() {
                 <img
                   className="w-full h-12 object-cover "
                   src={require("assets/img/whitelogo.png")}
+                  alt=''
                 />
               </Link>
             </div>
@@ -49,12 +50,12 @@ function BnbNav() {
           <Grid item xs={8} sm={8} className=" ">
             <ul className="flex justify-end items-center h-full text-white bnbNav-items">
             {localStorageData('_id')?
-              <li onClick={onClickProfile}>
-                <a>My Profile</a>
+              <li onClick={onClickProfile} className='cursor-pointer'>
+                <p>My Profile</p>
               </li>:null
               }
-              <li onClick={onClickMember}>
-                <a>My Account</a>
+              <li onClick={onClickMember} className='cursor-pointer'>
+                <p>My Account</p>
               </li>
               
               <li>
@@ -69,6 +70,7 @@ function BnbNav() {
                     <img
                       className='w-6 h-6 object-contain '
                       src={require('assets/img/icon.png')}
+                      alt="user icon"
                     />
                     <span className=' inline-block ml-2'>
                       Login/Become a member
