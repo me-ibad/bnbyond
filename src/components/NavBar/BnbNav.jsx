@@ -48,9 +48,11 @@ function BnbNav() {
           </Grid>
           <Grid item xs={8} sm={8} className=" ">
             <ul className="flex justify-end items-center h-full text-white bnbNav-items">
+            {localStorageData('_id')?
               <li onClick={onClickProfile}>
                 <a>My Profile</a>
-              </li>
+              </li>:null
+              }
               <li onClick={onClickMember}>
                 <a>My Account</a>
               </li>
