@@ -137,5 +137,13 @@ padding: 0px 30px;
     padding: 0px 10px;
     font-size: 13px;
     }
-   
+ /* .image-slide-wrapper{
+  width: 100%;
+ }
+ .image-slide {
+  width: 100%;
+ } */
+ .image-slide-wrapper{
+  margin-top: 16px;
+ }
 }

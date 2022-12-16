@@ -11,6 +11,9 @@ import userServices from "services/httpService/userAuth/userServices";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ImageEndPoint } from "config/config";
 import BnbNav from "components/NavBar/BnbNav";
+import { Slide } from 'react-slideshow-image';
+import { toast } from 'react-toastify';
+
 
 function PropertyDetails() {
   const [allPost, setallPost] = React.useState([]);
@@ -45,9 +48,14 @@ function PropertyDetails() {
     center: {},
     zoom: 11,
   };
+  const onClickClipBoard=()=>{
+    navigator.clipboard.writeText(window.location.href);
+    toast.success('link has been copied');
+ 
+  }
   return (
    
-    <main className="relative w-full  h-full  min-h-screen my-10">
+    <main className="relative w-full  h-full  min-h-screen my-10 border-2 ">
       {allPost == "" ? (
         <CircularProgress />
       ) : (
@@ -59,7 +67,9 @@ function PropertyDetails() {
                 <Grid item lg={8} md={6} sm={12} xs={12}>
                   <div className="my-2">
                     <div className="float-right grid grid-cols-2 gap-2 mb-2">
-                      <button className="border border-color-grey text-sm p-2 px-3 flex rounded-full">
+                      <button className="border border-color-grey text-sm p-2 px-3 flex rounded-full"
+                      onClick={onClickClipBoard}
+                      >
                         <i class="fas fa-share-square text-sm mx-2 my-1" />
                         Share
                       </button>
@@ -72,12 +82,21 @@ function PropertyDetails() {
                       {allPost.title}
                     </h1>
 
-                    <div className="my-2">
-                      <img
-                        src={ImageEndPoint + allPost.pics[0]}
-                        className="w-full h-96 object-cover rounded"
+                    <div className='my-2 w-full image-slide-wrapper '>
+                        <div className='w-full'>
+                    <Slide >
+         {allPost.pics.map((slideImage, index)=> (
+         
+        
+              <img
+                        src={ImageEndPoint + slideImage}
+                        className=" w-full h-96 object-cover rounded "
                         alt=""
                       />
+          ))} 
+        </Slide>
+                     
+                    </div>
                     </div>
                   </div>
                 </Grid>
@@ -190,8 +209,8 @@ function PropertyDetails() {
           </section>
         </>
       )}
-
-      <Footer />
+      
+      {/* <Footer /> */}
     </main>
   );
 }

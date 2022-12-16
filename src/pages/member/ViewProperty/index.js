@@ -4,11 +4,11 @@ import Container from "@mui/material/Container";
 import { useMutation, useQuery } from "react-query";
 import ErrorService from "services/formatError/ErrorService";
 import userServices from "services/httpService/userAuth/userServices";
-import userService from 'services/httpService/userAuth/userServices';
+import userService from "services/httpService/userAuth/userServices";
 
 import Button from "@mui/material/Button";
 import { localStorageData, Logout } from "services/auth/localStorageData";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -18,7 +18,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 
 const columns = [
   { id: "title", label: "Title", minWidth: 150 },
@@ -27,7 +27,8 @@ const columns = [
   { id: "price", label: "Price", minWidth: 50 },
   { id: "edit", label: "edit", minWidth: 20 },
   { id: "availability", label: "availability", minWidth: 20 },
-  { id: "viewListing", label: "viewListing", minWidth: 20 },
+  { id: "viewListing", label: "view Listing", minWidth: 20 },
+  { id: "deleteListing", label: "delete Listing", minWidth: 20 },
 ];
 
 function createData(name, code, population, size) {
@@ -36,7 +37,7 @@ function createData(name, code, population, size) {
 }
 
 function ViewProperty() {
-  const label = { inputProps: { 'aria-label': 'Switch demo' } };
+  const label = { inputProps: { "aria-label": "Switch demo" } };
   const [allPost, setallPost] = React.useState([]);
 
   const [page, setPage] = React.useState(0);
@@ -83,41 +84,58 @@ function ViewProperty() {
 
   let navigate = useNavigate();
 
+  const { mutate, isLoading } = useMutation(
+    (token) => userService.commonPostService("/property/toogleProperty", token),
+    {
+      onError: (error) => {
+        toast.error(ErrorService.uniformError(error), "error not available");
+      },
+      onSuccess: (data) => {
+        toast.success("Property Status Changed");
 
+        /// console.log(result);
+      },
+    }
+  );
 
- const { mutate,isLoading } = useMutation(
-  (token) => userService.commonPostService('/property/toogleProperty', token),
-  {
-    onError: (error) => {
-      toast.error(ErrorService.uniformError(error),"error not available");
-    },
-    onSuccess: (data) => {
-      toast.success('Property Status Changed');
+  const toggleHandleChange = (event, row) => {
+    row.status = event.target.checked;
+    let toggleData = {
+      propertyId: row._id,
+      status: event.target.checked,
+    };
+    mutate(toggleData);
+  };
+  const onClickView = (row) => {
+    if (row._id) {
+      navigate("/propertydetails/" + row._id);
+    }
+  };
+  // delete listing
+  const  deleteListing  = useMutation(
+    (token) =>
+      userService.commonPostService("/property/deletePropertyById", token),
+    {
+      onError: (error) => {
+        toast.error(ErrorService.uniformError(error), "error not available");
+      },
+      onSuccess: (data) => {
+        toast.success("Property Deleted");
+        getproperty();
+        /// console.log(result);
+      },
+    }
+  );
+  const onDeleteListing = async (row) => {
+    const r = window.confirm("Do You Really Want to Delete It ?");
+    if (r === true) {
+      deleteListing.mutate({
+        propertyId: row._id,
+      });
+    }
 
-     
-      /// console.log(result);
-    },
-  }
-);
-
-  
-const toggleHandleChange=(event,row)=>{
-
-  
-row.status=event.target.checked
-  let toggleData={
-    propertyId:row._id,
-     status:event.target.checked
-   }
-mutate(toggleData)
-
-}
-const onClickView=(row)=>{
-if(row._id){
-  navigate('/propertydetails/'+row._id)
-}
-}
- 
+    /////toast.success('deleted');
+  };
   return (
     <div className="mt-20">
       <Container maxWidth="lg">
@@ -158,74 +176,77 @@ if(row._id){
                               if (column.id === "edit") {
                                 return (
                                   <TableCell
-                                  key={column.id}
-                                  align={column.align}
-                                >
-                                  <div
-                                    className="m-4 bg-color-green p-2 font-bold rounded flex center-styl"
-                                    onClick={() => {
-                                      // console.log(row);
-                                      // navigate('/propertylisting', { state: row })
-                                      navigate('/propertylisting',{state:{offerState:row}})
-                                    }}
-                                  >
-                                    <div classname="text-black  text-lg text-center ">
-                                      Edit
-                                    </div>
-                                  
-                                  </div>
-                                  </TableCell>
-                                  
-                                );
-                                
-                               
-                              } 
-                              else if (column.id === "availability") {
-                                return (
-
-                                  <TableCell
                                     key={column.id}
                                     align={column.align}
                                   >
-                                  <div
-                                    className="m-4 bg-color-green p-2 font-bold rounded flex center-styl"
-                                  >
-                                    <div classname="text-black  text-lg text-center ">
-                                
-                                    <Switch {...label} 
-                                    checked={row.status}
-                                    onChange={(event)=>toggleHandleChange(event,row)}/>
-                                    </div>
-                                   
-                                  </div>
-                                  </TableCell>
-                                );
-                                
-                              } 
-                              else if (column.id === "viewListing") {
-                                return (
-
-                                  <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                  >
-                                  <div
-                                    className="m-4 bg-color-green p-2 font-bold rounded flex center-styl"
-                                  >
-                                    <div classname="text-black  text-lg text-center "
-                                    onClick={()=>onClickView(row)}
+                                    <div
+                                      className="m-4 bg-color-green p-2 font-bold rounded flex center-styl"
+                                      onClick={() => {
+                                        // console.log(row);
+                                        // navigate('/propertylisting', { state: row })
+                                        navigate("/propertylisting", {
+                                          state: { offerState: row },
+                                        });
+                                      }}
                                     >
-                                
-                                   viewListing
+                                      <div classname="text-black  text-lg text-center ">
+                                        Edit
+                                      </div>
                                     </div>
-                                   
-                                  </div>
                                   </TableCell>
                                 );
-                                
-                              } 
-                            
-                              else {
+                              } else if (column.id === "availability") {
+                                return (
+                                  <TableCell
+                                    key={column.id}
+                                    align={column.align}
+                                  >
+                                    <div className="m-4 bg-color-green p-2 font-bold rounded flex center-styl">
+                                      <div classname="text-black  text-lg text-center ">
+                                        <Switch
+                                          {...label}
+                                          checked={row.status}
+                                          onChange={(event) =>
+                                            toggleHandleChange(event, row)
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                );
+                              } else if (column.id === "viewListing") {
+                                return (
+                                  <TableCell
+                                    key={column.id}
+                                    align={column.align}
+                                  >
+                                    <div className="m-4 bg-color-green p-2 font-bold rounded flex center-styl">
+                                      <div
+                                        classname="text-black  text-lg text-center "
+                                        onClick={() => onClickView(row)}
+                                      >
+                                        viewListing
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                );
+                              } else if (column.id === "deleteListing") {
+                                return (
+                                  <TableCell
+                                    key={column.id}
+                                    align={column.align}
+                                  >
+                                    <div className="m-4 bg-color-green p-2 font-bold rounded flex center-styl">
+                                      <div
+                                        classname="text-black  text-lg text-center "
+                                        onClick={() => onDeleteListing(row)}
+                                      >Delete</div>
+
+                                      {/* <ConfirmButton/> */}
+                                    </div>
+                                  </TableCell>
+                                );
+                              } else {
                                 return (
                                   <TableCell
                                     key={column.id}
@@ -234,19 +255,14 @@ if(row._id){
                                     {column.format && typeof value === "number"
                                       ? column.format(value)
                                       : value}
-                                         
-
                                   </TableCell>
-                                  
                                 );
                               }
-                            })} 
-                  
+                            })}
                           </TableRow>
                         );
                       })
                   : ""}
-                  
               </TableBody>
             </Table>
           </TableContainer>
