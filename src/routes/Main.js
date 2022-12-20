@@ -14,6 +14,7 @@ import ImageSlidertest from 'components/ImageSlidertest/ImageSlidertest';
 import BnbNav from 'components/NavBar/BnbNav';
 import LandingPage from 'pages/Landingpage';
 import PropertyDetails from 'pages/customer/PropertyDetails';
+import ReserveDetails from 'pages/customer/PropertyDetails/ReserveDetails';
 function Main() {
   return (
     <>
@@ -29,6 +30,7 @@ function Main() {
             <Route path='/BnbNav' element={<BnbNav />} />
              <Route path='/' element={<LandingPage />} />
              <Route path='/propertydetails/:id' element={<PropertyDetails />} />
+             <Route path='/propertydetails/ReserveDetails' element={<ReserveDetails />} />
 
             <Route path='*' element={<Nofound />} />
           </Routes>

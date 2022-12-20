@@ -34,7 +34,7 @@ console.log(image,"image is")
  
   return (
    <>
-   <div className="slide-container w-80 ">
+   <div className="slide-container w-full ">
       <Slide>
        {data.pics.map((slideImage, index)=> (
         <div key={index}>

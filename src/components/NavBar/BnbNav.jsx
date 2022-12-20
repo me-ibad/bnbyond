@@ -1,6 +1,8 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { useNavigate, Link } from "react-router-dom";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { localStorageData, Logout } from 'services/auth/localStorageData';
 
 
@@ -20,6 +22,17 @@ function BnbNav() {
  const   onClickMember=() => {
         navigate('/member');
       }
+
+      const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <nav>
@@ -54,6 +67,46 @@ function BnbNav() {
                 <p>My Profile</p>
               </li>:null
               }
+                 <li>
+                <button onClick={handleClick} className=" w-20 rounded bg-white">
+                   <div className="px-2 py-1 rounded flex justify-between items-center text-black">
+                    <i class="fas fa-question-circle"></i>
+                    <p>Help</p>
+                    </div>
+                 
+                  </button>
+            
+               
+              </li>
+              <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                  
+                    <MenuItem onClick={''}>
+                      {/* <i class="fas fa-user mr-2"></i> */}
+                      Traveler help
+                    </MenuItem>
+                    <MenuItem onClick={''}>
+                      {/* <i class="fas fa-share mr-2 rotate-180"></i> */}
+                      Owner Help
+                    
+                    </MenuItem>
+                    <MenuItem onClick={''}>
+                      {/* <i class="fas fa-share mr-2"></i> */}
+                      Property Manager Help
+                    </MenuItem>
+                    <MenuItem onClick={''}>
+                      {/* <i class="fas fa-sitemap mr-2"></i> */}
+                      Trusty and Safety
+                    </MenuItem>
+                  </Menu>
+              
               <li onClick={onClickMember} className='cursor-pointer'>
                 <p>My Account</p>
               </li>

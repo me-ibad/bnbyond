@@ -123,7 +123,7 @@ export default function LandingPage() {
 
         <section className=' block py-10 lg:pt-0  lg:mx-12 sm:mx-0 xs:mx-0'>
           <Container maxWidth='xl'>
-            <Carousel
+            {/* <Carousel
               responsive={responsive}
               swipeable={true}
               draggable={false}
@@ -143,7 +143,16 @@ export default function LandingPage() {
               {allPost.map((item) => (
                 <HomeCard data={item} />
               ))}
-            </Carousel>
+            </Carousel> */}
+            <div className='w-full flex  flex-wrap'>
+              
+            {allPost.map((item) => (
+              <div className='mx-1 my-1 bnbHomecards-items '>
+                <HomeCard data={item} />
+                </div>
+              ))}
+             
+              </div>
           </Container>
         </section>
 

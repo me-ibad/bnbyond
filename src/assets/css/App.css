@@ -97,6 +97,12 @@
   padding-right: 10px;
   object-fit: cover;
 }
+.bnbHomecards-items{
+  width: 32.6%;
+}
+.bnbdetailPage-imgSlideWrapper{
+  width: 70%;
+}
 @media screen and (max-width: 767px) {
   .mtmob {
     margin-top: 100px;
@@ -106,6 +112,9 @@
   }
   .header-height {
     height: 550px;
+  }
+  .bnbHomecards-items{
+    width: 48.8%;
   }
 }
 
@@ -143,7 +152,24 @@ padding: 0px 30px;
  .image-slide {
   width: 100%;
  } */
- .image-slide-wrapper{
+ .bnbdetailPage-imgSlideWrapper{
   margin-top: 16px;
  }
+ .bnbHomecards-items{
+  width: 100%;
+  margin: 2px 0px;
+  
+}
+.detailpage-wrapper{
+  display: block;
+}
+.dp-item-wrapper{
+  width: 100%;
+}
+.dp-reserveCardWrapper{
+  width: 100vw;
+}
+.bnbdetailPage-imgSlideWrapper{
+  width: 100%;
+}
 }
