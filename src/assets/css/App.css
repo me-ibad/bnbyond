@@ -172,4 +172,7 @@ padding: 0px 30px;
 .bnbdetailPage-imgSlideWrapper{
   width: 100%;
 }
+.reserveDetailWrapper{
+  display: block;
+}
 }
