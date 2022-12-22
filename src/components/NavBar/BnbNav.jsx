@@ -32,7 +32,7 @@ function BnbNav() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+console.log(localStorageData('isAdmin'),"Local------------------")
   return (
     <>
       <nav>

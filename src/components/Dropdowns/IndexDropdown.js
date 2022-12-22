@@ -48,13 +48,29 @@ const IndexDropdown = () => {
         >
           Profile
         </MenuItem>
+       {localStorageData(!'isAdmin')?"nn":null
+       } 
         <MenuItem
+          onClick={() => {
+            navigate('auth/MemberForm');
+          }}
+        >
+          Apply for member
+        </MenuItem>
+<MenuItem
           onClick={() => {
             navigate('/member');
           }}
         >
           My account
         </MenuItem>
+        {/* <MenuItem
+          onClick={() => {
+            navigate('/member');
+          }}
+        >
+          My account
+        </MenuItem> */}
         <MenuItem
           onClick={() => {
             Logout();

@@ -17,6 +17,7 @@ import LandingPage from 'pages/Landingpage';
 import Admin from './Admin';
 import BnbNav from 'components/NavBar/BnbNav';
 
+
 function Root() {
   // let location = useLocation();
   // let navigate = useNavigate();
@@ -36,6 +37,7 @@ function Root() {
         <Route path='admin/*' element={<Admin />} />
 
         <Route path='member/*' element={<Member />} />
+       
         {/* <Route path='/' element={<LandingPage />} /> */}
         <Route path='/BnbNav' element={<BnbNav />} />
 

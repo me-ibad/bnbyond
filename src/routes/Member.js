@@ -7,6 +7,7 @@ import Dashboard from 'pages/member/Dashboard';
 import ViewProperty from 'pages/member/ViewProperty';
 import Profile from 'pages/customer/Profile';
 
+
 function Member() {
   return (
     <>
@@ -20,6 +21,7 @@ function Member() {
               <Route path='/propertylisting' element={<PropertyListing />} />
               <Route path='*' element={<Nofound />} />
               <Route path='/viewproperty' element={<ViewProperty />} />
+            
             </Routes>
           </section>
         </main>
