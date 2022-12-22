@@ -126,7 +126,7 @@ function BnbNav() {
                       alt="user icon"
                     />
                     <span className=' inline-block ml-2'>
-                      Login/Become a member
+                    Log in/Become a member
                     </span>
                   </a>
                 )}

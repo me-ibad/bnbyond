@@ -114,8 +114,7 @@ export default function LandingHeader() {
                         className='w-6/12 rounded-full  bg-gray-300 text-black px-4 py-2'
                       /> */}
                       <button className="text-sm">
-                        <i class="fas fa-map-marked-alt ml-2 "></i>-Used Map
-                        Instead
+                        <i class="fas fa-map-marked-alt mx-1 "></i>Popular nearby destinations
                       </button>
                     </div>
                   </div>

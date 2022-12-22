@@ -87,7 +87,7 @@ export default function Navbar(props) {
                       src={require('assets/img/icon.png')}
                     />
                     <span className=' inline-block ml-2'>
-                      Login/Become a member
+                     Log in/Become a member
                     </span>
                   </a>
                 )}

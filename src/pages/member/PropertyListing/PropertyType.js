@@ -22,7 +22,7 @@ export default function PropertyType({ state, setState }) {
         <Grid item lg={6} md={6} sm={12} xs={12}>
           <ListingColor
             bg='bg-color-yellow'
-            text='What type of property would you like to list?'
+            text='What type of property is it?'
             color='text-[#ead1a3]'
           />
         </Grid>

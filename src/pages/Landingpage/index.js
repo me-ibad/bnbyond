@@ -82,7 +82,7 @@ export default function LandingPage() {
                   <i class='fas fa-shield-alt text-2xl ' />
                   <h4 className='font-bold'>Peace of mind</h4>
                   <p className='text-sm '>
-                    Our Book with Confidence guarantee gives you 24/7 support.
+                  Our Book with Confidence Guarantee gives you 24/7 support.
                   </p>
                 </div>
               </Grid>
@@ -103,7 +103,7 @@ export default function LandingPage() {
                   <i class='fa-solid fa-mug-hot text-2xl ' />
                   <h4 className='font-bold'>All the privacy of home</h4>
                   <p className='text-sm '>
-                    Enjoy full kitchens, laundary, pools, yards and more.
+                  Enjoy full kitchens, laundry, pools, yards, and more
                   </p>
                 </div>
               </Grid>
@@ -113,7 +113,7 @@ export default function LandingPage() {
                   <i class='fas fa-database text-2xl ' />
                   <h4 className='font-bold'>More for less</h4>
                   <p className='text-sm '>
-                    More space,more privacy,more amenties-more values
+                  More space, more privacy, more amenities - more value
                   </p>
                 </div>
               </Grid>

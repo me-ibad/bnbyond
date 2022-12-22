@@ -107,7 +107,7 @@ else{
                             className="outline-0 text-black w-24"
                             ref={inputRef}
                             {...inputProps}
-                            placeholder="Check-in"
+                            placeholder="Check-out"
                             {...params}
                           />
                           {InputProps?.endAdornment}
