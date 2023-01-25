@@ -206,7 +206,7 @@ function PropertyDetails({data}) {
                         </div>
 
                         <h4 className="text-xl font-bold text-black">
-                          Summery
+                          Summary
                         </h4>
 
                         <p className="my-2 text-base text-black">
@@ -290,7 +290,7 @@ function PropertyDetails({data}) {
                     </TabPane>
                   </Tabs>
                 </div>
-                <div className="w-5/12 dp-reserveCardWrapper  flex items-center justify-center">
+                <div className="w-5/12 dp-reserveCardWrapper flex items-center md:justify-center pb-2">
                   <div className="w-80 rounded-xl p-6  drop-shadow-2xl bg-white flex justify-center items-center ">
                     <div className="">
                       <div className="border-2 w-full border-gray-400  rounded-t  flex">

@@ -48,7 +48,7 @@ const IndexDropdown = () => {
         >
           Profile
         </MenuItem>
-       {localStorageData(!'isAdmin')?"nn":null
+       {localStorageData('isAdmin')?"":null
        } 
         <MenuItem
           onClick={() => {
