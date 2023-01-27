@@ -4,6 +4,7 @@
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "private": true,
   "dependencies": {
+    "@date-io/moment": "^2.16.1",
     "@dropzone-ui/react": "^6.7.10",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -27,6 +28,7 @@
     "mui-image-slider": "^1.0.7",
     "react": "18.2.0",
     "react-calendar": "^4.0.0",
+    "react-daterange-picker": "^2.0.1",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.2",
     "react-facebook-login": "^4.1.1",
