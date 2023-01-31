@@ -49,7 +49,7 @@ function Signin() {
                     className="block  text-grey-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                  Email/Username
+                    Email/Username
                   </label>
                   <input
                     id="username"
@@ -104,7 +104,7 @@ function Signin() {
                   ) : (
                     <>
                       <button className="btn-styl" type="submit">
-                      Sign in 
+                        Sign in
                       </button>
                     </>
                   )}
