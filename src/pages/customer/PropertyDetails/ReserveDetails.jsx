@@ -8,7 +8,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { ImageEndPoint } from "config/config";
 import Rating from "@mui/material/Rating";
-import Rating from "@mui/material/Rating";
 import { localStorageData, Logout } from "services/auth/localStorageData";
 
 function ReserveDetails() {
@@ -37,13 +36,6 @@ function ReserveDetails() {
     }
   }
   console.log(state.propertyDetail, "propertyDetail");
-  const onClickContinue = () => {
-    if (localStorageData("_id")) {
-      alert("button Clicked");
-    } else {
-      navigate("/auth/signin");
-    }
-  };
   const onClickContinue = () => {
     if (localStorageData("_id")) {
       alert("button Clicked");
@@ -244,6 +236,40 @@ function ReserveDetails() {
                   <p className="font-semibold">
                     Your Booking is Protected by Bnbyond.{" "}
                   </p>
+                </div>
+              </div>
+            </div>
+            {/* Points Details */}
+            <div className="h-fit w-full">
+              <div className="propertyName mt-4 border-t-2 border-gray-500 w-11/12 m-auto ">
+                <h3 className="font-bold">Points Details</h3>
+                <div className=" mt-4 flex justify-between w-9/12">
+                  <p>100 points x 5 nights</p>
+                  <p>500 points</p>
+                </div>
+                <div className="flex justify-between w-9/12 mt-2">
+                  <p>Service fee</p>
+                  <p>50 points</p>
+                </div>
+              </div>
+            </div>
+            <div className=" mt-4 h-fit w-full">
+              <div className="propertyName  h-16 flex items-center border-t-2 border-gray-500 w-11/12 m-auto ">
+                <div className="flex justify-between w-9/12">
+                  <p>Total (points)</p>
+                  <p>550 points</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 w-full h-fit">
+              <div className="propertyName h-16 flex items-center justify-end  border-t-2 border-gray-500 w-11/12 m-auto ">
+                <div className=" flex justify-between w-9/12 ">
+                  <p>Your Booking is protected by</p>
+                  {/* <img
+                  className="w-3 h-4  "
+                  src={require("assets/img/whitelogo.png")}
+                  alt=''
+                /> */}
                 </div>
               </div>
             </div>
