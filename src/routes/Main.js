@@ -15,6 +15,7 @@ import BnbNav from "components/NavBar/BnbNav";
 import LandingPage from "pages/Landingpage";
 import PropertyDetails from "pages/customer/PropertyDetails";
 import ReserveDetails from "pages/customer/PropertyDetails/ReserveDetails";
+import ConfirmReservation from "pages/customer/PropertyDetails/ConfirmReservation";
 
 function Main() {
   return (
@@ -34,6 +35,10 @@ function Main() {
             <Route
               path="/propertydetails/ReserveDetails"
               element={<ReserveDetails />}
+            />
+            <Route
+              path="/propertydetails/ConfirmReservation"
+              element={<ConfirmReservation />}
             />
 
             <Route path="*" element={<Nofound />} />
