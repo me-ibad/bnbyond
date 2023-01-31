@@ -8,6 +8,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { ImageEndPoint } from "config/config";
 import Rating from "@mui/material/Rating";
+import Rating from "@mui/material/Rating";
 import { localStorageData, Logout } from "services/auth/localStorageData";
 
 function ReserveDetails() {
@@ -36,6 +37,13 @@ function ReserveDetails() {
     }
   }
   console.log(state.propertyDetail, "propertyDetail");
+  const onClickContinue = () => {
+    if (localStorageData("_id")) {
+      alert("button Clicked");
+    } else {
+      navigate("/auth/signin");
+    }
+  };
   const onClickContinue = () => {
     if (localStorageData("_id")) {
       alert("button Clicked");
