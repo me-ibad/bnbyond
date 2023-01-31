@@ -137,10 +137,13 @@
 .bnbNav-items li {
   padding: 0px 30px;
 }
+.height-line {
+  height: 100vh;
+}
 
 @media screen and (min-width: 0px) and (max-width: 600px) {
   .height-line {
-    height: 100vh;
+    height: 80vh;
   }
 
   .bnbNav-items li {
