@@ -23,7 +23,7 @@
 .header-height {
   height: 600px;
 }
-.landing-footer{
+.landing-footer {
   height: 500px;
 }
 .text-commingsoon {
@@ -97,10 +97,10 @@
   padding-right: 10px;
   object-fit: cover;
 }
-.bnbHomecards-items{
+.bnbHomecards-items {
   width: 32.6%;
 }
-.bnbdetailPage-imgSlideWrapper{
+.bnbdetailPage-imgSlideWrapper {
   width: 70%;
 }
 @media screen and (max-width: 767px) {
@@ -113,7 +113,7 @@
   .header-height {
     height: 550px;
   }
-  .bnbHomecards-items{
+  .bnbHomecards-items {
     width: 48.8%;
   }
 }
@@ -124,58 +124,61 @@
   }
 }
 
-
-.root .arrowWrapper{
-  border: 2px solid rgb(37, 230, 3)!important;
+.root .arrowWrapper {
+  border: 2px solid rgb(37, 230, 3) !important;
   color: rgb(4, 193, 130) !important;
-  background-color:darkorchid !important;
+  background-color: darkorchid !important;
 }
-
 
 /* Bnb NavBar */
-.bnbNvar_wrapper{
-  background-color: #007AA2;
+.bnbNvar_wrapper {
+  background-color: #007aa2;
 }
-.bnbNav-items li{
-padding: 0px 30px;
+.bnbNav-items li {
+  padding: 0px 30px;
 }
-
+.height-line {
+  height: 100vh;
+}
 
 @media screen and (min-width: 0px) and (max-width: 600px) {
-  .bnbNav-items li{
+  .height-line {
+    height: 80vh;
+  }
+
+  .bnbNav-items li {
     padding: 0px 10px;
     font-size: 13px;
-    }
- /* .image-slide-wrapper{
+  }
+  /* .image-slide-wrapper{
   width: 100%;
  }
  .image-slide {
   width: 100%;
  } */
- .bnbdetailPage-imgSlideWrapper{
-  margin-top: 16px;
- }
- .bnbHomecards-items{
-  width: 100%;
-  margin: 2px 0px;
-  
-}
-.detailpage-wrapper{
-  display: block;
-}
-.dp-item-wrapper{
-  width: 100%;
-}
-.dp-reserveCardWrapper{
-  width: 100vw;
-}
-.bnbdetailPage-imgSlideWrapper{
-  width: 100%;
-}
-.reserveDetailWrapper{
-  display: block;
-}
-.memberForm-wrapper{
-  width: 94%;
-}
+  .bnbdetailPage-imgSlideWrapper {
+    margin-top: 16px;
+  }
+  .bnbHomecards-items {
+    width: 100%;
+    margin: 2px 0px;
+  }
+  .detailpage-wrapper {
+    display: block;
+  }
+  .dp-item-wrapper {
+    width: 100%;
+  }
+  .dp-reserveCardWrapper {
+    width: 100vw;
+  }
+  .bnbdetailPage-imgSlideWrapper {
+    width: 100%;
+  }
+  .reserveDetailWrapper {
+    display: block;
+  }
+  .memberForm-wrapper {
+    width: 94%;
+  }
 }

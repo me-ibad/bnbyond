@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ImageEndPoint } from "config/config";
 import Rating from "@mui/material/Rating";
 import { localStorageData, Logout } from "services/auth/localStorageData";
+import Grid from "@mui/material/Grid";
 
 function ReserveDetails() {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ function ReserveDetails() {
   const location = useLocation();
   const { state } = location;
   console.log(state, "my state");
-  let [checkIn, setCheckIn] = useState(state.offerState.checkIn);
-  let [checkOut, setCheckOut] = useState(state.offerState.checkOut);
-  let [count, setCount] = useState(state.offerState.count);
+  let [checkIn, setCheckIn] = useState(state?.offerState.checkIn);
+  let [checkOut, setCheckOut] = useState(state?.offerState.checkOut);
+  let [count, setCount] = useState(state?.offerState.count);
   function incrementCount() {
     const num = count + 1;
 
@@ -46,199 +47,219 @@ function ReserveDetails() {
   return (
     <>
       <Container maxWidth="xl">
-        <div className=" reserveDetailWrapper  flex ">
-          <div className=" md:w-6/12">
-            <div className="h-24 flex item-center">
-              <div className="flex items-center ">
-                <i class="fas fa-angle-left"></i>
-                <h4 className="text-2xl font-bold ml-6">Confirm and pay</h4>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-xl">Your trip</h4>
-            </div>
-            <div className="mt-2 w-36">
-              <h4>Dates</h4>
-              <div className=" w-80 flex justify-between">
-                <div className="border-2 border-gray-400 p-2">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                      label="Basic example"
-                      value={checkIn}
-                      onChange={(newValue) => setCheckIn(newValue)}
-                      renderInput={({
-                        inputRef,
-                        inputProps,
-                        InputProps,
-                        params,
-                      }) => (
-                        <div className="flex items-center  ">
-                          <input
-                            className="outline-0 text-black w-24"
-                            ref={inputRef}
-                            {...inputProps}
-                            placeholder="Check-in"
-                            {...params}
-                          />
-                          {InputProps?.endAdornment}
-                        </div>
-                      )}
-                    />
-                  </LocalizationProvider>
+        <Container maxWidth="xl">
+          <Grid container spacing={2}>
+            <Grid item lg={6} xs={12}>
+              <div className=" w-full">
+                <div className="h-24 flex item-center">
+                  <div className="flex items-center ">
+                    <i class="fas fa-angle-left"></i>
+                    <h4 className="text-2xl font-bold ml-6">Confirm And Pay</h4>
+                  </div>
                 </div>
-                <div className="border-2 border-gray-400 p-2">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                      label="Basic example"
-                      value={checkOut}
-                      onChange={(newValue) => setCheckOut(newValue)}
-                      renderInput={({
-                        inputRef,
-                        inputProps,
-                        InputProps,
-                        params,
-                      }) => (
-                        <div className="flex items-center  ">
-                          <input
-                            className="outline-0 text-black w-24"
-                            ref={inputRef}
-                            {...inputProps}
-                            placeholder="Check-out"
-                            {...params}
-                          />
-                          {InputProps?.endAdornment}
-                        </div>
-                      )}
-                    />
-                  </LocalizationProvider>
+                <div>
+                  <h4 className="text-xl font-semibold">Your trip</h4>
                 </div>
-              </div>
-            </div>
-
-            <div className=" m-4 lg:mr-2 md:mr-2 ">
-              <div className="flex items-center font-bold">
-                <label htmlFor="">Guests</label>
-                <button className="ml-5" onClick={decrementCount}>
-                  -
-                </button>
-                <span className="bg-gray-300 px-4 py-2 rounded-3xl ml-2 ">
-                  {count}
-                </span>
-                <button className="ml-1" onClick={incrementCount}>
-                  +
-                </button>
-              </div>
-            </div>
-            {/* <div className="btn-continue w-full flex justify-center">
-           
-             <button className="w-80 py-2 bg-red-500 text-white rounded"
-              onClick={onClickContinue}
+                <div className="mt-2 w-36">
+                  <h4 className="font-semibold">Dates</h4>
+                  <div className=" w-80  flex justify-between">
+                    <div className="border-2 border-gray-400 p-2 rounded-xl">
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                          label="Basic example"
+                          value={checkIn}
+                          onChange={(newValue) => setCheckIn(newValue)}
+                          renderInput={({
+                            inputRef,
+                            inputProps,
+                            InputProps,
+                            params,
+                          }) => (
+                            <div className="flex items-center  ">
+                              <input
+                                className="outline-0 text-black w-24  "
+                                ref={inputRef}
+                                {...inputProps}
+                                placeholder="Check-in"
+                                {...params}
+                              />
+                              {InputProps?.endAdornment}
+                            </div>
+                          )}
+                        />
+                      </LocalizationProvider>
+                    </div>
+                    <div className="border-2 border-gray-400 p-2 rounded-xl">
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                          label="Basic example"
+                          value={checkOut}
+                          onChange={(newValue) => setCheckOut(newValue)}
+                          renderInput={({
+                            inputRef,
+                            inputProps,
+                            InputProps,
+                            params,
+                          }) => (
+                            <div className="flex items-center  ">
+                              <input
+                                className="outline-0 text-black w-24"
+                                ref={inputRef}
+                                {...inputProps}
+                                placeholder="Check-out"
+                                {...params}
+                              />
+                              {InputProps?.endAdornment}
+                            </div>
+                          )}
+                        />
+                      </LocalizationProvider>
+                    </div>
+                  </div>
+                </div>
+                <div className=" m-4 lg:mr-2 md:mr-2 ">
+                  <div className="flex items-center font-bold">
+                    <label htmlFor="">Guests</label>
+                    <button className="ml-5" onClick={decrementCount}>
+                      -
+                    </button>
+                    <span className="bg-gray-300 px-4 py-2 rounded-3xl ml-2 ">
+                      {count}
+                    </span>
+                    <button className="ml-1" onClick={incrementCount}>
+                      +
+                    </button>
+                  </div>
+                </div>
+                {/* <div className="btn-continue w-full flex justify-center">
+              <button
+                className="w-80 py-2 bg-red-500 text-white rounded"
+                onClick={onClickContinue}
               >
-            Continue
-                </button> 
+                Continue
+              </button>
             </div> */}
-            <div className="cancellationWrapper  md:w-11/12 border-t-2 border-gray-500">
-              <h5 className="font-bold mt-6 text-xl">Cancellation Policy</h5>
-              <p className="text-sm mt-1">
-                Free cancellation for 48 hours. Cancel before Apr 13 for a
-                partial points refund
-              </p>
-            </div>
-            <div className="PointsWrapper mt-6 w-11/12 border-t-2 border-gray-500">
-              <h5 className="font-bold mt-8 text-xl">Your current points</h5>
-              <p className="text-blue-400 mt-1">850 points</p>
-              <p className="mt-1">
-                Remaining points after this booking:{" "}
-                <span className="text-green-500">300 points</span>
-              </p>
-            </div>
-            <div className="PointsWrapper w-11/12 mt-8 border-t-2 border-gray-500">
-              <p className=" mt-6">
-                by selecting the button below I agree to host's house rules.
-                Ground rules for guest. Bnbyond's Rebooking and Refund policy
-              </p>
-              <div className="btn-continue w-full ">
-                <button
-                  className="w-56 py-3 bg-blue-700 text-white rounded-xl mt-4"
-                  onClick={onClickContinue}
-                >
-                  Confirm Reservation
-                </button>
+                <hr className="mt-6  border-gray-700 w-11/12" />
+                <div className="mt-5">
+                  <h4 className="text-xl text-black  font-semibold">
+                    Cancellation Policy
+                  </h4>
+                  <p className="mt-2 text-md">
+                    <span className="font-semibold">
+                      Free Cancellation for 48 hours.
+                    </span>
+                    <span>
+                      Cancel Before Apr 13 for a partial points refund.
+                    </span>
+                  </p>
+                  <hr className="mt-6  border-gray-700 w-11/12" />
+                </div>
+                <div className="mt-5">
+                  <h4 className="text-xl text-black  font-semibold">
+                    Your Current Points
+                  </h4>
+                  <p className="mt-2 text-md">
+                    <span className="font-semibold text-[#3DABBF]">
+                      850 Points
+                    </span>
+                  </p>
+                  <div className="mt-2">
+                    <span className="text-md  font-semibold">
+                      Remaining Points after this booking:
+                      <span className="text-lime-500 ml-2">300 Points</span>
+                    </span>
+                  </div>
+
+                  <hr className="mt-6  border-gray-700 w-11/12" />
+                  <div className="mt-6">
+                    <span className="text-sm font-semibold">
+                      By Selecting The Button below, I agree the Hosts House
+                      Rules, Ground Rules foer Guests,Bnbyond's Rebooking and
+                      Refund Policy.
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-4 ml-3">
+                  <button className="py-3 px-5  rounded-xl text-white font-semibold bg-[#46AFC2]">
+                    Confirm Reservation
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Image Areas */}
-          <div className="md:w-6/12 ">
-            <div className="border-2 border-gray-300 rounded-xl border-t-0 md:w-10/12 mt-10 ">
-            <div className="reserveImage w-full flex items-end">
-              <img
-                src={ImageEndPoint + state.propertyDetail.pics[0]}
-                className="w-full object-cover rounded-xl h-56"
-                alt=""
-              />
-            </div>
-            {/* Title and Rating */}
-            <div className=" flex h-24 w-full  ">
-              <div className="propertyName w-11/12 m-auto ">
-                <p>{state.propertyDetail.title}</p>
-
-                <div className="locRatWrapper flex justify-between">
-                  <p>Address</p>
-                  <div className="flex">
-                    <p className="mr-4 flex items-center">
-                      {" "}
-                      <Rating name="read-only" value={value} readOnly />5
-                    </p>
-                    <p> SuperHost</p>
+            </Grid>
+            <Grid item lg={6} xs={12}>
+              {" "}
+              <div className="reserveDetailWrapper flex mt-2">
+                {/* Image Areas */}
+                <div className="height-line h-screen mt-20 border ml-4 rounded-xl border-gray-500">
+                  <div className="reserveImage  ">
+                    <img
+                      src={ImageEndPoint + state.propertyDetail.pics[0]}
+                      className="w-full h-48 object-cover rounded-xl "
+                      alt=""
+                    />
+                  </div>
+                  <div className="  items-center h-48 ">
+                    {/* <div className="propertyName ">
+                  <p>{state.propertyDetail.title}</p>
+                  <p>
+                    {" "}
+                    <Rating name="read-only" value={value} readOnly />
+                  </p>
+                  <p> points $400</p>
+                </div> */}
+                    <div className=" mt-3 ml-6">
+                      <span className="text-lime-500 text-md">Tree House</span>
+                    </div>
+                    <div className="mt-3 ml-6 flex">
+                      <span>Veluvana Belle - Owl Bamboo House</span>
+                      {/* <p className="ml-4">
+                    {" "}
+                    <Rating name="read-only" value={5} readOnly />
+                  </p> */}
+                      <p className=" text-md ml-6 mr-4">4.8 (95 Reviews)</p>
+                    </div>
+                    <hr className="mt-6 ml-3 border-gray-700 w-12/12 flex justify-center items-center" />
+                    <div className="mt-3 ml-4">
+                      <h4 className="text-xl text-black  font-semibold">
+                        Points Datails
+                      </h4>
+                    </div>
+                    <div className="flex mt-6">
+                      <span className="ml-4 font-semibold">
+                        100 Points x 5 nights
+                      </span>
+                      <span className="ml-24 font-semibold">500 points</span>
+                    </div>
+                    <div className="flex mt-6">
+                      <span className="ml-4 font-semibold">Services Fee</span>
+                      <span className="ml-40 font-semibold">50 points</span>
+                    </div>
+                    <hr className="mt-6 ml-3 border-gray-700 w-12/12 flex justify-center items-center" />
+                    <div className="flex mt-6">
+                      <span className="ml-4 font-semibold">Total (points)</span>
+                      <span className="ml-36 font-semibold">550 points</span>
+                    </div>
+                    <hr className="mt-6 ml-3 border-gray-700 w-12/12 flex justify-center items-center" />
+                    <div className=" flex text-center justify-center mt-4 ">
+                      <p className="font-semibold">
+                        Your Booking is Protected by Bnbyond.{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {/* Points Details */}
-            <div className="h-fit w-full">
-              <div className="propertyName mt-4 border-t-2 border-gray-500 w-11/12 m-auto ">
-              <h3 className="font-bold">Points Details</h3>
-              <div className=" mt-4 flex justify-between w-9/12">
-                <p>100 points x 5 nights</p>
-                <p>500 points</p>
-              </div>
-              <div className="flex justify-between w-9/12 mt-2">
-                <p>Service fee</p>
-                <p>50 points</p>
-              </div>
-              </div>
-              
-            </div>
-            <div className=" mt-4 h-fit w-full">
-              <div className="propertyName  h-16 flex items-center border-t-2 border-gray-500 w-11/12 m-auto ">
-              
-              <div className="flex justify-between w-9/12">
-                <p>Total (points)</p>
-                <p>550 points</p>
-              </div>
-             
-              </div>
-              
-            </div>
-            <div className="mt-4 w-full h-fit">
-              <div className="propertyName h-16 flex items-center justify-end  border-t-2 border-gray-500 w-11/12 m-auto ">
-              
-              <div className=" flex justify-between w-9/12 ">
-                <p>Your Booking is protected by</p>
-                {/* <img
-                  className="w-3 h-4  "
-                  src={require("assets/img/whitelogo.png")}
-                  alt=''
-                /> */}
-              </div>
-             
-              </div>
-              
-            </div>
-          </div>
-          </div>
-        </div>
+            </Grid>
+          </Grid>
+
+          <br />
+          <br />
+
+          <br />
+
+          <br />
+          <br />
+          <br />
+        </Container>
       </Container>
     </>
   );
