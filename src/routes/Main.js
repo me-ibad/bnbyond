@@ -1,47 +1,53 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Landingpage from "pages/Landingpage";
-import Navbar from "components/Navbars/AuthNavbar";
-import PropertyListing from "pages/member/PropertyListing";
-import Nofound from "pages/StaticPages/Nofound";
-import Footer from "components/Footers/Footer";
-import ViewProperty from "pages/member/ViewProperty";
-import Profile from "pages/customer/Profile";
-import VerificationPage from "pages/customer/VerificationPage";
-import SearchListings from "pages/customer/SearchListings";
-import ImageSlidertest from "components/ImageSlidertest/ImageSlidertest";
-import BnbNav from "components/NavBar/BnbNav";
-import LandingPage from "pages/Landingpage";
-import PropertyDetails from "pages/customer/PropertyDetails";
-import ReserveDetails from "pages/customer/PropertyDetails/ReserveDetails";
-import ConfirmReservation from "pages/customer/PropertyDetails/ConfirmReservation";
+import Landingpage from 'pages/Landingpage';
+import Navbar from 'components/Navbars/AuthNavbar';
+import PropertyListing from 'pages/member/PropertyListing';
+import Nofound from 'pages/StaticPages/Nofound';
+import Footer from 'components/Footers/Footer';
+import ViewProperty from 'pages/member/ViewProperty';
+import Profile from 'pages/customer/Profile';
+import VerificationPage from 'pages/customer/VerificationPage';
+import SearchListings from 'pages/customer/SearchListings';
+import ImageSlidertest from 'components/ImageSlidertest/ImageSlidertest';
+import BnbNav from 'components/NavBar/BnbNav';
+import LandingPage from 'pages/Landingpage';
+import PropertyDetails from 'pages/customer/PropertyDetails';
+import ReserveDetails from 'pages/customer/PropertyDetails/ReserveDetails';
+import ConfirmReservation from 'pages/customer/PropertyDetails/ConfirmReservation';
+import BookingConfirmation from 'pages/customer/BookingConfirmation';
 
 function Main() {
   return (
     <>
       <BnbNav />
       <main>
-        <section className="relative w-full  h-full  min-h-screen ">
+        <section className='relative w-full  h-full  min-h-screen '>
           <Routes>
-            <Route path="/propertylisting" element={<PropertyListing />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/verification" element={<VerificationPage />} />
-            <Route path="/search/:lat/:long" element={<SearchListings />} />
-            <Route path="/ImageSlidertest" element={<ImageSlidertest />} />
-            <Route path="/BnbNav" element={<BnbNav />} />
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/propertydetails/:id" element={<PropertyDetails />} />
+            <Route path='/propertylisting' element={<PropertyListing />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/verification' element={<VerificationPage />} />
+            <Route path='/search/:lat/:long' element={<SearchListings />} />
+            <Route path='/ImageSlidertest' element={<ImageSlidertest />} />
+            <Route path='/BnbNav' element={<BnbNav />} />
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/propertydetails/:id' element={<PropertyDetails />} />
             <Route
-              path="/propertydetails/ReserveDetails"
+              path='/bookingconfirmation'
+              element={<BookingConfirmation />}
+            />
+
+            <Route
+              path='/propertydetails/ReserveDetails'
               element={<ReserveDetails />}
             />
             <Route
-              path="/propertydetails/ConfirmReservation"
+              path='/propertydetails/ConfirmReservation'
               element={<ConfirmReservation />}
             />
 
-            <Route path="*" element={<Nofound />} />
+            <Route path='*' element={<Nofound />} />
           </Routes>
         </section>
       </main>
