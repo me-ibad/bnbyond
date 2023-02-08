@@ -16,7 +16,8 @@ function ReserveDetails() {
   const [value, setValue] = React.useState(5);
   const location = useLocation();
   const { state } = location;
-  console.log(state, "my state");
+  console.log(state, "my state zohaib");
+
   let [checkIn, setCheckIn] = useState(state?.offerState.checkIn);
   let [checkOut, setCheckOut] = useState(state?.offerState.checkOut);
   let [count, setCount] = useState(state?.offerState.count);
@@ -28,6 +29,7 @@ function ReserveDetails() {
     }
     setCount(num);
   }
+
   function decrementCount() {
     const num = count - 1;
     if (num < 0) {
@@ -36,6 +38,12 @@ function ReserveDetails() {
       setCount(num);
     }
   }
+
+  const onClickConfirm = () => {
+    navigate(`/ConfirmReservation`, {
+      // state: { offerState: state, propertyDetail: allPost },
+    });
+  };
   console.log(state.propertyDetail, "propertyDetail");
   const onClickContinue = () => {
     if (localStorageData("_id")) {
@@ -44,6 +52,7 @@ function ReserveDetails() {
       navigate("/auth/signin");
     }
   };
+
   return (
     <>
       <Container maxWidth="xl">
@@ -160,7 +169,7 @@ function ReserveDetails() {
                   </h4>
                   <p className="mt-2 text-md">
                     <span className="font-semibold text-[#3DABBF]">
-                      850 Points
+                      {state.propertyDetail.points} Points
                     </span>
                   </p>
                   <div className="mt-2">
@@ -180,7 +189,10 @@ function ReserveDetails() {
                   </div>
                 </div>
                 <div className="mt-4 ml-3">
-                  <button className="py-3 px-5  rounded-xl text-white font-semibold bg-[#46AFC2]">
+                  <button
+                    className="py-3 px-5  rounded-xl text-white font-semibold bg-[#46AFC2]"
+                    onClick={onClickConfirm}
+                  >
                     Confirm Reservation
                   </button>
                 </div>
@@ -208,10 +220,17 @@ function ReserveDetails() {
                   <p> points $400</p>
                 </div> */}
                     <div className=" mt-3 ml-6">
-                      <span className="text-lime-500 text-md">Tree House</span>
+                      <span className="text-lime-500 text-md">
+                        {state.propertyDetail.propertyType}
+                      </span>
+                    </div>
+                    <div className=" mt-3 ml-6">
+                      <span className="text-lime-500 text-md text-xl font-semibold">
+                        {state.propertyDetail.title}
+                      </span>
                     </div>
                     <div className="mt-3 ml-6 flex">
-                      <span>Veluvana Belle - Owl Bamboo House</span>
+                      <span>{state.propertyDetail.address}</span>
                       {/* <p className="ml-4">
                     {" "}
                     <Rating name="read-only" value={5} readOnly />
@@ -231,8 +250,8 @@ function ReserveDetails() {
                       <span className="ml-24 font-semibold">500 points</span>
                     </div>
                     <div className="flex mt-6">
-                      <span className="ml-4 font-semibold">Services Fee</span>
-                      <span className="ml-40 font-semibold">50 points</span>
+                      <span className="ml-4 font-semibold">Services Fees</span>
+                      <span className="ml-24 font-semibold">50 points</span>
                     </div>
                     <hr className="mt-6 ml-3 border-gray-700 w-12/12 flex justify-center items-center" />
                     <div className="flex mt-6">
@@ -250,17 +269,9 @@ function ReserveDetails() {
               </div>
             </Grid>
           </Grid>
-
-          <br />
-          <br />
-
-          <br />
-
-          <br />
-          <br />
-          <br />
         </Container>
       </Container>
+      <br />
     </>
   );
 }

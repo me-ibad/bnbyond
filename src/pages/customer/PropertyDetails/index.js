@@ -16,11 +16,11 @@ import { toast } from "react-toastify";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useNavigate, Link } from 'react-router-dom';
-import Moment from 'react-moment';
- import moment from 'moment';
+import { useNavigate, Link } from "react-router-dom";
+import Moment from "react-moment";
+import moment from "moment";
 //import moment from 'moment-timezone/builds/moment-timezone-with-data-2012-2022'
-function PropertyDetails({data}) {
+function PropertyDetails({ data }) {
   const [allPost, setallPost] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -58,65 +58,59 @@ function PropertyDetails({data}) {
     toast.success("link has been copied");
   };
 
-  
   let navigate = useNavigate();
   const onClickReserve = () => {
-
-    navigate(`/propertydetails/ReserveDetails`,{state:{offerState:state,propertyDetail:allPost}})
-   
+    navigate(`/ReserveDetails`, {
+      state: { offerState: state, propertyDetail: allPost },
+    });
   };
 
- 
-
   const [state, setState] = React.useState({
-    checkIn:'',
-    checkOut:'',
-    guest:0,
-    count:0,
-    
-  })
-  
+    checkIn: "",
+    checkOut: "",
+    guest: 0,
+    count: 0,
+  });
+
   // var moment = require('moment'); // require
- 
+
   // CheckIn
   // const checkInClick=(newValue)=>{
   //  const checkDate= moment(newValue).format('DD/MM/YYYY')
   //  console.log(checkDate,"Check date")
-   
+
   // }
-  const checkInClick= newValue => {
+  const checkInClick = (newValue) => {
     const valueOfcheckIn = newValue.format();
-    console.log(valueOfcheckIn,'checkIn')
- 
-  setState((prevState) => ({ ...prevState, checkIn: valueOfcheckIn}));
+    console.log(valueOfcheckIn, "checkIn");
+
+    setState((prevState) => ({ ...prevState, checkIn: valueOfcheckIn }));
   };
 
-  const checkOutClick=(newValue)=>{
+  const checkOutClick = (newValue) => {
     const valueOfcheckOut = newValue.format();
-   console.log(valueOfcheckOut,"checkOut")
-   
-   setState((prevState) => ({ ...prevState, checkOut: valueOfcheckOut }));
-  }
+    console.log(valueOfcheckOut, "checkOut");
 
-  console.log(state,"my dates")
-  const decrementCount=()=>{
+    setState((prevState) => ({ ...prevState, checkOut: valueOfcheckOut }));
+  };
+
+  console.log(state, "my dates");
+  const decrementCount = () => {
     const num = state.count - 1;
     if (num < 0) {
       return;
     } else {
-      setState((prevState) => ({ ...prevState, count: num}));
+      setState((prevState) => ({ ...prevState, count: num }));
     }
-  }
-  const incrementCount=()=>{
+  };
+  const incrementCount = () => {
     const num = state.count + 1;
     if (state.count > 8) {
       return;
     }
-  
 
-    setState((prevState) => ({ ...prevState, count: num}));
-
-  }
+    setState((prevState) => ({ ...prevState, count: num }));
+  };
 
   // let [count, setCount] = useState(0);
   // function incrementCount() {
@@ -300,11 +294,10 @@ function PropertyDetails({data}) {
                               label="Basic example"
                               value={state.checkIn}
                               dateFormat="LLL"
-                              onChange={newValue => checkInClick(newValue)}
+                              onChange={(newValue) => checkInClick(newValue)}
                               // onChange={(newValue) => {
                               //   setState((prevState) => ({ ...prevState, checkIn: newValue }));;
-                                
-                                 
+
                               // }}
                               renderInput={({
                                 inputRef,
@@ -326,13 +319,13 @@ function PropertyDetails({data}) {
                             />
                           </LocalizationProvider>
                         </div>
-                       
+
                         <div className="p-2">
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
                               label="Basic example"
                               value={state.checkOut}
-                              onChange={newValue => checkOutClick(newValue)}
+                              onChange={(newValue) => checkOutClick(newValue)}
                               // onChange={(newValue) => {
                               //  console.log(newValue)
                               //   setState((prevState) => ({ ...prevState, checkOut: newValue }));;
@@ -359,26 +352,26 @@ function PropertyDetails({data}) {
                         </div>
                       </div>
                       <div className="border-x-2 border-b-2 border-gray-400 rounded-b p-1">
-                      <div className=" m-4 lg:mr-2 md:mr-2 ">
-                    <div className="flex items-center font-bold">
-                      <label htmlFor="">Guests</label>
-                      <button className="ml-5" onClick={decrementCount}>
-                        -
-                      </button>
-                      <span className="bg-gray-300 px-4 py-2 rounded-3xl ml-2 ">
-                        {state.count}
-                      </span>
-                      <button className="ml-1" onClick={incrementCount}>
-                        +
-                      </button>
-                    </div>
-                  </div>
+                        <div className=" m-4 lg:mr-2 md:mr-2 ">
+                          <div className="flex items-center font-bold">
+                            <label htmlFor="">Guests</label>
+                            <button className="ml-5" onClick={decrementCount}>
+                              -
+                            </button>
+                            <span className="bg-gray-300 px-4 py-2 rounded-3xl ml-2 ">
+                              {state.count}
+                            </span>
+                            <button className="ml-1" onClick={incrementCount}>
+                              +
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                     
 
                       <div className=" mt-4">
-                        <button className="px-2 py-3 w-full bg-red-500 rounded text-white"
-                        onClick={onClickReserve}
+                        <button
+                          className="px-2 py-3 w-full bg-red-500 rounded text-white"
+                          onClick={onClickReserve}
                         >
                           Reserve
                         </button>
