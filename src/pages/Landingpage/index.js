@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import Container from '@mui/material/Container';
-import LandingHeader from 'components/Headers/LandingHeader';
-import Grid from '@mui/material/Grid';
-import HomeCard from 'components/Cards/HomeCard';
-import Carousel from 'react-multi-carousel';
-import { HomeData } from 'data/HomeData';
-import { useMutation, useQuery } from 'react-query';
-import userServices from 'services/httpService/userAuth/userServices';
-import { toast } from 'react-toastify';
-import ErrorService from 'services/formatError/ErrorService';
-import { Slide } from 'react-slideshow-image';
-import Navbar from 'components/Navbars/AuthNavbar';
+import Container from "@mui/material/Container";
+import LandingHeader from "components/Headers/LandingHeader";
+import Grid from "@mui/material/Grid";
+import HomeCard from "components/Cards/HomeCard";
+import Carousel from "react-multi-carousel";
+import { HomeData } from "data/HomeData";
+import { useMutation, useQuery } from "react-query";
+import userServices from "services/httpService/userAuth/userServices";
+import { toast } from "react-toastify";
+import ErrorService from "services/formatError/ErrorService";
+import { Slide } from "react-slideshow-image";
+import Navbar from "components/Navbars/AuthNavbar";
+import Footer from "components/Footers/Footer";
+import Footerbn from "pages/Footer/Footerbn";
 
 export default function LandingPage() {
   const [allPost, setallPost] = React.useState([]);
@@ -70,7 +72,6 @@ export default function LandingPage() {
   return (
     <>
       <Navbar />
-
       <main>
         <LandingHeader />
 
@@ -82,7 +83,7 @@ export default function LandingPage() {
                   <i class='fas fa-shield-alt text-2xl ' />
                   <h4 className='font-bold'>Peace of mind</h4>
                   <p className='text-sm '>
-                  Our Book with Confidence Guarantee gives you 24/7 support.
+                    Our Book with Confidence Guarantee gives you 24/7 support.
                   </p>
                 </div>
               </Grid>
@@ -103,7 +104,7 @@ export default function LandingPage() {
                   <i class='fa-solid fa-mug-hot text-2xl ' />
                   <h4 className='font-bold'>All the privacy of home</h4>
                   <p className='text-sm '>
-                  Enjoy full kitchens, laundry, pools, yards, and more
+                    Enjoy full kitchens, laundry, pools, yards, and more
                   </p>
                 </div>
               </Grid>
@@ -113,7 +114,7 @@ export default function LandingPage() {
                   <i class='fas fa-database text-2xl ' />
                   <h4 className='font-bold'>More for less</h4>
                   <p className='text-sm '>
-                  More space, more privacy, more amenities - more value
+                    More space, more privacy, more amenities - more value
                   </p>
                 </div>
               </Grid>
@@ -145,14 +146,12 @@ export default function LandingPage() {
               ))}
             </Carousel> */}
             <div className='w-full flex  flex-wrap'>
-              
-            {allPost.map((item) => (
-              <div className='mx-1 my-1 bnbHomecards-items '>
-                <HomeCard data={item} />
+              {allPost.map((item) => (
+                <div className='mx-1 my-1 bnbHomecards-items '>
+                  <HomeCard data={item} />
                 </div>
               ))}
-             
-              </div>
+            </div>
           </Container>
         </section>
 
@@ -184,6 +183,7 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
+      <Footerbn />
     </>
   );
 }

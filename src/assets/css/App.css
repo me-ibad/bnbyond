@@ -188,3 +188,9 @@
   display: block;
   width: auto;
 }
+.footer-bg-col {
+  background-color: #34789e;
+}
+.bn-text-col {
+  color: #b4b6b7;
+}
