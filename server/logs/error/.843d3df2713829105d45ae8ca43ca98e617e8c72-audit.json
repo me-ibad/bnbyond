@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/Users/saeedm./Downloads/Projects/web/bnbyond/server/logs/error/.843d3df2713829105d45ae8ca43ca98e617e8c72-audit.json",
+    "files": [
+        {
+            "date": 1694634948792,
+            "name": "/Users/saeedm./Downloads/Projects/web/bnbyond/server/logs/error/2023-09-14.log",
+            "hash": "051f4b2b65db6bfb2ef8cb2441c8881014be32fdf3ee3a8a0ac01f8ea9e0dc58"
+        }
+    ],
+    "hashType": "sha256"
+}
